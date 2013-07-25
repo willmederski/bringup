@@ -7,17 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if current_teacher.present? %>
-  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
-	<% else %>
-  		<%= link_to 'Sign In', new_teacher_session_path %> |
-  		<%= link_to 'Register Now!', new_teacher_registration_path %>
-	<% end %>
+	<div id="header">
+		<h1>bringup</h1>
+		<div class="navbar">
+			<% if current_teacher.present? %>
+		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
+			<% else %>
+		  		<%= link_to 'Sign In', new_teacher_session_path %> |
+		  		<%= link_to 'Register Now!', new_teacher_registration_path %>
+			<% end %>
+		</div>
+	</div>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="card">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 
-	<%= yield %>
+		<%= yield %>
+	</div>
 
 </body>
 </html>

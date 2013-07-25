@@ -1,0 +1,55 @@
+// Place all the styles related to the teachers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+input {
+	border-radius: 20px;
+	border: 3px solid #bdbdbd;
+	height: 20px;
+	text-align:left;
+	padding-left: 20px;
+	color:black;
+	margin:5px;
+}
+
+[type=submit] {
+	background-color:#FF9200;
+	opacity:.6;
+	border: none;
+	border-radius:5px;
+	color:white;
+	text-align:center;
+	height:30px;
+	width: 100px;
+	padding: 0;
+}
+
+[type=submit]:hover{
+	background-color:gray;
+}
+
+.formcard {
+	background-color:white;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px gray;
+	width: 80%;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.headingwrap {
+	background-color:#8BC9CA;
+	color:white;
+	width: 80%;
+	border-radius: 5px;
+	margin: auto;
+	margin-bottom: 30px;
+	padding: 1px;
+	text-align:left;
+	padding-left:20px;
+}
+
+h3 {
+	font-size: 1em;
+}
