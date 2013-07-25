@@ -21,6 +21,33 @@ ActiveRecord::Schema.define(:version => 20130725040846) do
     t.integer  "teacher_id"
   end
 
+  create_table "schools", :force => true do |t|
+    t.string   "school_number"
+    t.string   "school_name"
+    t.string   "instruction_type"
+    t.string   "charter_type"
+    t.string   "school_street_address"
+    t.string   "school_city"
+    t.string   "school_state"
+    t.string   "school_zip"
+    t.string   "school_site_street_address"
+    t.string   "school_site_city"
+    t.string   "school_site_state"
+    t.string   "school_site_zip"
+    t.string   "school_phone"
+    t.string   "school_fax"
+    t.string   "school_email_address"
+    t.string   "school_web_page_address"
+    t.string   "school_principal"
+    t.string   "grade_range"
+    t.string   "enrollment_as_of_oct_2012"
+    t.string   "school_status"
+    t.string   "school_status_date"
+    t.datetime "update_date"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "teachers", :force => true do |t|
     t.string   "full_name"
     t.string   "preferred_name"
