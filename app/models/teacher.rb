@@ -4,4 +4,6 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, :full_name, :phone, :preferred_name, :principal_name, :school, :password, :password_confirmation, presence: true
 
+  has_many :courses
+  
 end

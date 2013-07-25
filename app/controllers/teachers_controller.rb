@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
-  before_filter :authenticate_teacher!
+ 
 
   def index
     @teachers = Teacher.all
@@ -46,8 +46,8 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        format.json { render json: @teacher, status: :created, location: @teacher }
+        format.html { redirect_to @courses, notice: 'Teacher was successfully created.' }
+        format.json { render json: @courses, status: :created, location: @teacher }
       else
         format.html { render action: "new" }
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.update_attributes(params[:teacher])
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
+        format.html { redirect_to @courses, notice: 'Teacher was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

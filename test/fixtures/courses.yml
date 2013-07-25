@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  twilio_id: MyString
+  name: MyString
+  teacher_id: 
+
+two:
+  twilio_id: MyString
+  name: MyString
+  teacher_id: 

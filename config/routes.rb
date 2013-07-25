@@ -1,8 +1,11 @@
 BringUp::Application.routes.draw do
+  resources :courses
+
+
   devise_for :teachers
   resources :teachers
 
-  root :to => "teachers#index"
+  root :to => "courses#index"
 
 #                      teachers GET    /teachers(.:format)               teachers#index
 #                             POST   /teachers(.:format)               teachers#create

@@ -22,10 +22,13 @@ input {
 	height:30px;
 	width: 100px;
 	padding: 0;
+	transition: .5s;
+	margin-bottom:20px;
 }
 
 [type=submit]:hover{
 	background-color:gray;
+	transition: .5s;
 }
 
 .formcard {
@@ -39,6 +42,7 @@ input {
 }
 
 .headingwrap {
+	font-family: 'Raleway', sans-serif;
 	background-color:#8BC9CA;
 	color:white;
 	width: 80%;
