@@ -1,0 +1,36 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Body</th>
+    <th>Send date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.course_id %></td>
+    <td><%= message.body %></td>
+    <td><%= message.send_date %></td>
+    <td><%= link_to 'Show', course_message %></td>
+    <td><%= link_to 'Edit', edit_course_message(message) %></td>
+    <td><%= link_to 'Destroy', course_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Message', new_message_path %>
+
+
+
+<!-- course_messages GET    /courses/:course_id/messages(.:format)          messages#index
+                             POST   /courses/:course_id/messages(.:format)          messages#create
+         new_course_message GET    /courses/:course_id/messages/new(.:format)      messages#new
+        edit_course_message GET    /courses/:course_id/messages/:id/edit(.:format) messages#edit              course_message GET    /courses/:course_id/messages/:id(.:format)      messages#show
+                             PUT    /courses/:course_id/messages/:id(.:format)      messages#update
+                            DELETE /courses/:course_id/messages/:id(.:format)      messages#destroy -->
