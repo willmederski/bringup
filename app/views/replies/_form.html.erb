@@ -1,0 +1,61 @@
+<%= form_for(@reply) do |f| %>
+  <% if @reply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
+
+      <ul>
+      <% @reply.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :message_id %><br />
+    <%= f.text_field :message_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date_created %><br />
+    <%= f.text_field :date_created %>
+  </div>
+  <div class="field">
+    <%= f.label :date_updated %><br />
+    <%= f.text_field :date_updated %>
+  </div>
+  <div class="field">
+    <%= f.label :account_sid %><br />
+    <%= f.text_field :account_sid %>
+  </div>
+  <div class="field">
+    <%= f.label :from %><br />
+    <%= f.text_field :from %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :direction %><br />
+    <%= f.text_field :direction %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :price_unit %><br />
+    <%= f.text_field :price_unit %>
+  </div>
+  <div class="field">
+    <%= f.label :api_version %><br />
+    <%= f.text_field :api_version %>
+  </div>
+  <div class="field">
+    <%= f.label :uri %><br />
+    <%= f.text_field :uri %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

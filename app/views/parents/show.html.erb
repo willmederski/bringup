@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Class code:</b>
+  <%= @parent.class_code %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @parent.phone_number %>
+</p>
+
+<p>
+  <b>First nm:</b>
+  <%= @parent.first_nm %>
+</p>
+
+<p>
+  <b>Last nm:</b>
+  <%= @parent.last_nm %>
+</p>
+
+<p>
+  <b>Child nm:</b>
+  <%= @parent.child_nm %>
+</p>
+
+<p>
+  <b>Relationship:</b>
+  <%= @parent.relationship %>
+</p>
+
+<p>
+  <b>Delivery time:</b>
+  <%= @parent.delivery_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_parent_path(@parent) %> |
+<%= link_to 'Back', parents_path %>

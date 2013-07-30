@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  message_id: MyString
+  date_created: MyString
+  date_updated: MyString
+  account_sid: MyString
+  from: MyString
+  body: MyText
+  direction: MyString
+  price: 1.5
+  price_unit: MyString
+  api_version: MyString
+  uri: MyString
+
+two:
+  message_id: MyString
+  date_created: MyString
+  date_updated: MyString
+  account_sid: MyString
+  from: MyString
+  body: MyText
+  direction: MyString
+  price: 1.5
+  price_unit: MyString
+  api_version: MyString
+  uri: MyString

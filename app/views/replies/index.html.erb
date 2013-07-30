@@ -1,0 +1,43 @@
+<h1>Listing replies</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th>Date created</th>
+    <th>Date updated</th>
+    <th>Account sid</th>
+    <th>From</th>
+    <th>Body</th>
+    <th>Direction</th>
+    <th>Price</th>
+    <th>Price unit</th>
+    <th>Api version</th>
+    <th>Uri</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @replies.each do |reply| %>
+  <tr>
+    <td><%= reply.message_id %></td>
+    <td><%= reply.date_created %></td>
+    <td><%= reply.date_updated %></td>
+    <td><%= reply.account_sid %></td>
+    <td><%= reply.from %></td>
+    <td><%= reply.body %></td>
+    <td><%= reply.direction %></td>
+    <td><%= reply.price %></td>
+    <td><%= reply.price_unit %></td>
+    <td><%= reply.api_version %></td>
+    <td><%= reply.uri %></td>
+    <td><%= link_to 'Show', reply %></td>
+    <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+    <td><%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reply', new_reply_path %>

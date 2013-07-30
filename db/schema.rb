@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730002324) do
+ActiveRecord::Schema.define(:version => 20130730192457) do
 
   create_table "courses", :force => true do |t|
     t.string   "twilio_id"
@@ -27,6 +27,34 @@ ActiveRecord::Schema.define(:version => 20130730002324) do
     t.date     "send_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "parents", :force => true do |t|
+    t.string   "class_code"
+    t.string   "phone_number"
+    t.string   "first_nm"
+    t.string   "last_nm"
+    t.string   "child_nm"
+    t.string   "relationship"
+    t.string   "delivery_time"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "replies", :force => true do |t|
+    t.string   "message_id"
+    t.string   "date_created"
+    t.string   "date_updated"
+    t.string   "account_sid"
+    t.string   "from"
+    t.text     "body"
+    t.string   "direction"
+    t.float    "price"
+    t.string   "price_unit"
+    t.string   "api_version"
+    t.string   "uri"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "schools", :force => true do |t|

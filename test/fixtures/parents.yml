@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  class_code: MyString
+  phone_number: MyString
+  first_nm: MyString
+  last_nm: MyString
+  child_nm: MyString
+  relationship: MyString
+  delivery_time: MyString
+
+two:
+  class_code: MyString
+  phone_number: MyString
+  first_nm: MyString
+  last_nm: MyString
+  child_nm: MyString
+  relationship: MyString
+  delivery_time: MyString

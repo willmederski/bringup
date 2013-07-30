@@ -1,6 +1,13 @@
 BringUp::Application.routes.draw do
 
+  resources :replies
+
+
+  resources :parents
+
+
   #get "recipients/response"
+  #post "parents/response", to: controller#action
 
 
 
