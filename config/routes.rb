@@ -1,4 +1,7 @@
 BringUp::Application.routes.draw do
+  resources :messages
+
+
   resources :courses
 
 
