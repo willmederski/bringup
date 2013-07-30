@@ -24,7 +24,9 @@ class MessagesController < ApplicationController
   # GET /messages/new
   # GET /messages/new.json
   def new
+    require 'dates'
     @message = Message.new
+    @weekstart = MessageDates::execute
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @weekstart = MessageDates::execute
 
     respond_to do |format|
       if @message.save

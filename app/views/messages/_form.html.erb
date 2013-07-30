@@ -11,19 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :course_id %><br />
-    <%= f.text_field :course_id %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_field :body %>
-  </div>
-  <div class="field">
-    <%= f.label :send_date %><br />
-    <%= f.date_select :send_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <% i=1 %>
+    <% while i<=5 do %>
+      <div class="field">
+        <%= f.label (@weekstart + i*(60*60*24)) %><br />
+        <%= f.text_field :body %>
+      </div>
+      <% i+=1 %>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

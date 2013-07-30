@@ -13,7 +13,10 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    require 'dates'
     @course = Course.find(params[:id])
+    @message = Message.new
+    @weekstart = MessageDates::execute
 
     respond_to do |format|
       format.html # show.html.erb
