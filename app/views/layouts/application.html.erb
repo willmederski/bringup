@@ -11,6 +11,7 @@
 		<h1>bringup</h1>
 		<div class="navbar">
 			<% if current_teacher.present? %>
+				Welcome, <%=current_teacher.full_name%> |
 		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
 			<% else %>
 		  		<%= link_to 'Sign In', new_teacher_session_path %> |

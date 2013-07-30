@@ -4,48 +4,48 @@ BringUp::Application.routes.draw do
   devise_for :teachers
 
   resources :teachers
-  resources :courses do
-    resources :messages
-  end
-   
+  resources :courses
+  resources :messages
 
   root :to => "courses#index"
 
-# new_teacher_session GET    /teachers/sign_in(.:format)                     devise/sessions#new
-#             teacher_session POST   /teachers/sign_in(.:format)                     devise/sessions#create
-#     destroy_teacher_session DELETE /teachers/sign_out(.:format)                    devise/sessions#destroy
-#            teacher_password POST   /teachers/password(.:format)                    devise/passwords#create
-#        new_teacher_password GET    /teachers/password/new(.:format)                devise/passwords#new
-#       edit_teacher_password GET    /teachers/password/edit(.:format)               devise/passwords#edit
-#                             PUT    /teachers/password(.:format)                    devise/passwords#update
-# cancel_teacher_registration GET    /teachers/cancel(.:format)                      devise/registrations#cancel
-#        teacher_registration POST   /teachers(.:format)                             devise/registrations#create
-#    new_teacher_registration GET    /teachers/sign_up(.:format)                     devise/registrations#new
-#   edit_teacher_registration GET    /teachers/edit(.:format)                        devise/registrations#edit
-#                             PUT    /teachers(.:format)                             devise/registrations#update
-#                             DELETE /teachers(.:format)                             devise/registrations#destroy
-#                    teachers GET    /teachers(.:format)                             teachers#index
-#                             POST   /teachers(.:format)                             teachers#create
-#                 new_teacher GET    /teachers/new(.:format)                         teachers#new
-#                edit_teacher GET    /teachers/:id/edit(.:format)                    teachers#edit
-#                     teacher GET    /teachers/:id(.:format)                         teachers#show
-#                             PUT    /teachers/:id(.:format)                         teachers#update
-#                             DELETE /teachers/:id(.:format)                         teachers#destroy
-#             course_messages GET    /courses/:course_id/messages(.:format)          messages#index
-#                             POST   /courses/:course_id/messages(.:format)          messages#create
-#          new_course_message GET    /courses/:course_id/messages/new(.:format)      messages#new
-#         edit_course_message GET    /courses/:course_id/messages/:id/edit(.:format) messages#edit
-#              course_message GET    /courses/:course_id/messages/:id(.:format)      messages#show
-#                             PUT    /courses/:course_id/messages/:id(.:format)      messages#update
-#                             DELETE /courses/:course_id/messages/:id(.:format)      messages#destroy
-#                     courses GET    /courses(.:format)                              courses#index
-#                             POST   /courses(.:format)                              courses#create
-#                  new_course GET    /courses/new(.:format)                          courses#new
-#                 edit_course GET    /courses/:id/edit(.:format)                     courses#edit
-#                      course GET    /courses/:id(.:format)                          courses#show
-#                             PUT    /courses/:id(.:format)                          courses#update
-#                             DELETE /courses/:id(.:format)                          courses#destroy
-#                        root        /                                               courses#index
+
+
+#         new_teacher_session GET    /teachers/sign_in(.:format)       devise/sessions#new
+#             teacher_session POST   /teachers/sign_in(.:format)       devise/sessions#create
+#     destroy_teacher_session DELETE /teachers/sign_out(.:format)      devise/sessions#destroy
+#            teacher_password POST   /teachers/password(.:format)      devise/passwords#create
+#        new_teacher_password GET    /teachers/password/new(.:format)  devise/passwords#new
+#       edit_teacher_password GET    /teachers/password/edit(.:format) devise/passwords#edit
+#                             PUT    /teachers/password(.:format)      devise/passwords#update
+# cancel_teacher_registration GET    /teachers/cancel(.:format)        devise/registrations#cancel
+#        teacher_registration POST   /teachers(.:format)               devise/registrations#create
+#    new_teacher_registration GET    /teachers/sign_up(.:format)       devise/registrations#new
+#   edit_teacher_registration GET    /teachers/edit(.:format)          devise/registrations#edit
+#                             PUT    /teachers(.:format)               devise/registrations#update
+#                             DELETE /teachers(.:format)               devise/registrations#destroy
+#                    teachers GET    /teachers(.:format)               teachers#index
+#                             POST   /teachers(.:format)               teachers#create
+#                 new_teacher GET    /teachers/new(.:format)           teachers#new
+#                edit_teacher GET    /teachers/:id/edit(.:format)      teachers#edit
+#                     teacher GET    /teachers/:id(.:format)           teachers#show
+#                             PUT    /teachers/:id(.:format)           teachers#update
+#                             DELETE /teachers/:id(.:format)           teachers#destroy
+#                     courses GET    /courses(.:format)                courses#index
+#                             POST   /courses(.:format)                courses#create
+#                  new_course GET    /courses/new(.:format)            courses#new
+#                 edit_course GET    /courses/:id/edit(.:format)       courses#edit
+#                      course GET    /courses/:id(.:format)            courses#show
+#                             PUT    /courses/:id(.:format)            courses#update
+#                             DELETE /courses/:id(.:format)            courses#destroy
+#                    messages GET    /messages(.:format)               messages#index
+#                             POST   /messages(.:format)               messages#create
+#                 new_message GET    /messages/new(.:format)           messages#new
+#                edit_message GET    /messages/:id/edit(.:format)      messages#edit
+#                     message GET    /messages/:id(.:format)           messages#show
+#                             PUT    /messages/:id(.:format)           messages#update
+#                             DELETE /messages/:id(.:format)           messages#destroy
+#                        root        /                                 courses#index
 
 
 
