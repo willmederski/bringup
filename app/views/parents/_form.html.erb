@@ -1,0 +1,45 @@
+<%= form_for(@parent) do |f| %>
+  <% if @parent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
+
+      <ul>
+      <% @parent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :class_code %><br />
+    <%= f.text_field :class_code %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :first_nm %><br />
+    <%= f.text_field :first_nm %>
+  </div>
+  <div class="field">
+    <%= f.label :last_nm %><br />
+    <%= f.text_field :last_nm %>
+  </div>
+  <div class="field">
+    <%= f.label :child_nm %><br />
+    <%= f.text_field :child_nm %>
+  </div>
+  <div class="field">
+    <%= f.label :relationship %><br />
+    <%= f.text_field :relationship %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_time %><br />
+    <%= f.text_field :delivery_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

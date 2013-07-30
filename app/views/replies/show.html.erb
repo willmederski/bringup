@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Message:</b>
+  <%= @reply.message_id %>
+</p>
+
+<p>
+  <b>Date created:</b>
+  <%= @reply.date_created %>
+</p>
+
+<p>
+  <b>Date updated:</b>
+  <%= @reply.date_updated %>
+</p>
+
+<p>
+  <b>Account sid:</b>
+  <%= @reply.account_sid %>
+</p>
+
+<p>
+  <b>From:</b>
+  <%= @reply.from %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @reply.body %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @reply.status %>
+</p>
+
+<p>
+  <b>Direction:</b>
+  <%= @reply.direction %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @reply.price %>
+</p>
+
+<p>
+  <b>Price unit:</b>
+  <%= @reply.price_unit %>
+</p>
+
+<p>
+  <b>Api version:</b>
+  <%= @reply.api_version %>
+</p>
+
+<p>
+  <b>Uri:</b>
+  <%= @reply.uri %>
+</p>
+
+
+<%= link_to 'Edit', edit_reply_path(@reply) %> |
+<%= link_to 'Back', replies_path %>
