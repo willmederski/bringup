@@ -41,7 +41,19 @@ class RepliesController < ApplicationController
   # POST /replies
   # POST /replies.json
   def create
-    @reply = Reply.new(params[:reply])
+    @reply = Reply.new
+    @reply.message_id = params["message_id"]
+    @reply.date_created=params["date_created"]
+    @reply.date_updated=params["date_updated"]
+    @reply..account_sid=params["account_sid"]
+    @reply.from=params["from"]
+    @reply.body=params["body"]
+    @reply.status=params["status"]
+    @reply.direction=params["direction"]
+    @reply.price=params["price"]
+    @reply.price_unit=params["price_unit"]
+    @reply.api_version=params["api_version"]
+    @reply.uri=params["uri"]
 
     respond_to do |format|
       if @reply.save
