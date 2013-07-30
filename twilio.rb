@@ -1,29 +1,31 @@
-#require 'rubygems'
-#require 'twilio-ruby'
+require 'rubygems'
+require 'twilio-ruby'
 #require 'sinatra'
 
 #module TwilioCalls
-#	def send_test_text
-#		account_sid = ENV['TWILIO_ACCOUNT_SID']
-#		auth_token = ENV['TWILIO_TOKEN']
-#		client = Twilio::REST::Client.new account_sid, auth_token
-#		from = "+15128618455" # Your Twilio number
+	def send_test_text
+		account_sid = ENV['TWILIO_ACCOUNT_SID']
+		auth_token = ENV['TWILIO_TOKEN']
+		client = Twilio::REST::Client.new account_sid, auth_token
+		from = "+15128618455" # Your Twilio number
 		 
-#		friends = {
-#		"+15128261724" => "Lydia",
-		#+18323725189" => "Pati",
+		friends = {
+		#"+15128261724" => "Lydia",
+		"+18323725189" => "Pati",
 		#"+12029069232" => "Will"
-#		}
-#		friends.each do |key, value|
-#		  client.account.sms.messages.create(
-#		    :from => from,
-#		    :to => key,
-#		    :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
-#		  ) 
-#		  puts "Sent message to #{value}"
-#		end
-#	end
+		}
+		friends.each do |key, value|
+		  client.account.sms.messages.create(
+		    :from => from,
+		    :to => key,
+		    :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
+		  ) 
+		  puts "Sent message to #{value}"
+		end
+	end
 #end
+
+send_test_text
  
 
 
@@ -80,17 +82,17 @@
 
 #---------------------------------------------------
 
-require 'rubygems'
-require 'twilio-ruby'
+# require 'rubygems'
+# require 'twilio-ruby'
 
-@account_sid = ENV['TWILIO_ACCOUNT_SID']
-@auth_token = ENV['TWILIO_TOKEN']
+# @account_sid = ENV['TWILIO_ACCOUNT_SID']
+# @auth_token = ENV['TWILIO_TOKEN']
 
-# set up a client to talk to the Twilio REST API
-@client = Twilio::REST::Client.new(@account_sid, @auth_token)
+# # set up a client to talk to the Twilio REST API
+# @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
 
-@account = @client.account
-@account.sms.messages.list({}).each do |message|
-  puts @message
-end
+# @account = @client.account
+# @account.sms.messages.list({}).each do |message|
+#   puts @message
+# end
