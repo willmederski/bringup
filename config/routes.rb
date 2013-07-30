@@ -1,4 +1,6 @@
 BringUp::Application.routes.draw do
+  get "recipients/response"
+
   resources :courses
 
 
@@ -6,6 +8,10 @@ BringUp::Application.routes.draw do
   resources :teachers
 
   root :to => "courses#index"
+
+  #recipients POST /recipients/response(.:format)      recipients#response
+
+  
 
 #                      teachers GET    /teachers(.:format)               teachers#index
 #                             POST   /teachers(.:format)               teachers#create
