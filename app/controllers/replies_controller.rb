@@ -1,6 +1,8 @@
 class RepliesController < ApplicationController
   require "time"
   skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :authenticate_teacher!, :only => [:create]
+
   # GET /replies
   # GET /replies.json
   def index
