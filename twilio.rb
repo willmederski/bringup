@@ -18,7 +18,7 @@ require 'twilio-ruby'
 		  client.account.sms.messages.create(
 		    :from => from,
 		    :to => key,
-		    :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
+		    :body => "Hey #{value}, Please enter this course number 123457"
 		  ) 
 		  puts "Sent message to #{value}"
 		end

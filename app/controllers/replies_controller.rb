@@ -1,5 +1,6 @@
 class RepliesController < ApplicationController
   require "time"
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   # GET /replies
   # GET /replies.json
   def index
@@ -42,18 +43,18 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new
-    @reply.message_id = params["message_id"]
-    @reply.date_created=params["date_created"]
-    @reply.date_updated=params["date_updated"]
-    @reply..account_sid=params["account_sid"]
-    @reply.from=params["from"]
-    @reply.body=params["body"]
-    @reply.status=params["status"]
-    @reply.direction=params["direction"]
-    @reply.price=params["price"]
-    @reply.price_unit=params["price_unit"]
-    @reply.api_version=params["api_version"]
-    @reply.uri=params["uri"]
+    @reply.message_id = params["SmsSid"]
+    #@reply.date_created=params["date_created"]
+    #@reply.date_updated=params["date_updated"]
+    @reply.account_sid=params["AccountSid"]
+    @reply.from=params["From"]
+    @reply.body=params["Body"]
+    @reply.status=params["SmsStatus"]
+    #@reply.direction=params["direction"]
+    #@reply.price=params["price"]
+    #@reply.price_unit=params["price_unit"]
+    @reply.api_version=params["ApiVersion"]
+    #@reply.uri=params["uri"]
 
     respond_to do |format|
       if @reply.save
