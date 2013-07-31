@@ -15,10 +15,8 @@ BringUp::Application.routes.draw do
   devise_for :teachers
 
   resources :teachers
-  resources :courses do
-    resources :messages
-  end
-   
+  resources :courses
+  resources :messages
 
   root :to => "courses#index"
 

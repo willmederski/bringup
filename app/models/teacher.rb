@@ -5,5 +5,6 @@ class Teacher < ActiveRecord::Base
   validates :email, :full_name, :phone, :preferred_name, :principal_name, :school, :password, :password_confirmation, presence: true
 
   has_many :courses
+  has_many :messages
   
 end
