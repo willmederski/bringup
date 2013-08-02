@@ -3,31 +3,51 @@ require 'twilio-ruby'
 #require 'sinatra'
 
 #module TwilioCalls
-	def send_test_text
+# 	def send_test_text
+# 		account_sid = ENV['TWILIO_ACCOUNT_SID']
+# 		auth_token = ENV['TWILIO_TOKEN']
+# 		client = Twilio::REST::Client.new account_sid, auth_token
+# 		from = "+15128618455" # Your Twilio number
+		 
+# 		parents = {
+# 		#"+15128261724" => "Lydia",
+# 		"+18323725189" => "Pati",
+# 		#"+12029069232" => "Will"
+# 		}
+# 		parents.each do |key, value|
+# 		  client.account.sms.messages.create(
+# 		    :from => from,
+# 		    :to => key,
+# 		    :body => "Hey #{value}, Please enter this course number 123457"
+# 		  ) 
+# 		  puts "Sent message to #{value}"
+# 		end
+# 	end
+# #end
+
+# send_test_text
+ 
+def get_first_nm
 		account_sid = ENV['TWILIO_ACCOUNT_SID']
 		auth_token = ENV['TWILIO_TOKEN']
 		client = Twilio::REST::Client.new account_sid, auth_token
 		from = "+15128618455" # Your Twilio number
+		to = @reply.from
 		 
-		friends = {
-		#"+15128261724" => "Lydia",
+		parents = {
+		"+15128261724" => "Lydia",
 		"+18323725189" => "Pati",
 		#"+12029069232" => "Will"
 		}
-		friends.each do |key, value|
+		parents.each do |key, value|
 		  client.account.sms.messages.create(
 		    :from => from,
 		    :to => key,
-		    :body => "Hey #{value}, Please enter this course number 123457"
+		    :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
 		  ) 
 		  puts "Sent message to #{value}"
 		end
 	end
-#end
-
-send_test_text
- 
-
 
 #puts account_sid
 
@@ -51,8 +71,8 @@ send_test_text
 #require 'rubygems'
 #require 'twilio-ruby'
 
-#@account_sid = 'AC542565827439d1d218c032891b6f7d09'
-#@auth_token = # your authtoken here
+#@account_sid = ENV['TWILIO_ACCOUNT_SID']
+#@auth_token = ENV['TWILIO_TOKEN']
 
 # set up a client to talk to the Twilio REST API
 #@client = Twilio::REST::Client.new(@account_sid, @auth_token)
@@ -68,8 +88,8 @@ send_test_text
 #require 'rubygems'
 #require 'twilio-ruby'
 
-#@account_sid = 'AC542565827439d1d218c032891b6f7d09'
-#@auth_token = # your authtoken here
+#@account_sid = ENV['TWILIO_ACCOUNT_SID']
+#@auth_token = ENV['TWILIO_TOKEN'
 
 # set up a client to talk to the Twilio REST API
 #@client = Twilio::REST::Client.new(@account_sid, @auth_token)

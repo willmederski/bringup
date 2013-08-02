@@ -31,6 +31,7 @@ gem 'devise'
 gem 'ui_datepicker-rails3'
 gem 'formtastic'
 gem 'twilio-ruby'
+gem 'rabl'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
