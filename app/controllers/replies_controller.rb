@@ -38,26 +38,18 @@ def receive
     @reply.body=params["Body"]
     @reply.status=params["SmsStatus"]
     @reply.api_version=params["ApiVersion"]
-    @respond_to do |format|
-      if @reply.save
-      #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
-      format.xml{ render xml: @reply, status: :created, location: @reply }
-    else
-      #format.html { render action: "new" }
-      format.xml { render xml: @reply.errors, status: :unprocessable_entity }
-    end
-  end
+    
 
   get_first_nm(@reply.from)
   @sms_state = 'welcome'
-elsif @sms_state == 'welcome'
-  @reply.first_nm=params["Body"]
-  get_last_nm(@reply.from)
-  @sms_state = 'first_nm'   
-elsif @sms_state == 'first_nm'
-  @reply.last_nm=params["Body"]
-  @sms_state = 'complete'
-end
+  elsif @sms_state == 'welcome'
+    @reply.first_nm=params["Body"]
+    get_last_nm(@reply.from)
+    @sms_state = 'first_nm'   
+  elsif @sms_state == 'first_nm'
+    @reply.last_nm=params["Body"]
+    @sms_state = 'complete'
+  end
 end
 
 def get_first_nm(sendto)
@@ -91,7 +83,15 @@ def get_last_nm(sendto)
   puts "Sent message to #{value}"
 end
 
-
+@respond_to do |format|
+      if @reply.save
+        #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+        format.xml{ render xml: @reply, status: :created, location: @reply }
+      else
+        #format.html { render action: "new" }
+        format.xml { render xml: @reply.errors, status: :unprocessable_entity }
+      end
+    end
 
 end
 
