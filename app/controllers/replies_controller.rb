@@ -74,11 +74,11 @@ def receive
   @sms_state = session[:sms_state]
   if @sms_state.nil?
      @sms_state = 'welcome'
-     get_first_nm
+     get_first_nm(@reply.from)
    elsif @sms_state == 'welcome'
     @reply.first_nm=params["Body"]
     @sms_state = 'first_nm'
-    get_last_nm
+    get_last_nm(@reply.from)
   elsif @sms_state == 'first_nm'
     @reply.last_nm=params["Body"]
     @sms_state = 'complete'
@@ -86,12 +86,12 @@ def receive
 
 end
 
-def get_first_nm
+def get_first_nm('sendto')
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_TOKEN']
   client = Twilio::REST::Client.new account_sid, auth_token
   from = "+15128618455" # Your Twilio number
-  to = @reply.from
+  to = sendto
      
 
   client.account.sms.messages.create(
@@ -102,12 +102,12 @@ def get_first_nm
       puts "Sent message to #{value}"
     end
 
-  def get_last_nm
+  def get_last_nm('sendto')
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_TOKEN']
   client = Twilio::REST::Client.new account_sid, auth_token
   from = "+15128618455" # Your Twilio number
-  to = @reply.from
+  to = sendto
      
 
       client.account.sms.messages.create(
