@@ -23,7 +23,7 @@ class RepliesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @reply }
     end
-  end
+  end 
 
 #Example
 
@@ -160,7 +160,7 @@ def get_first_nm
 #     set parent.status field to complete
 #    end   
 
-
+end
 
 
 
