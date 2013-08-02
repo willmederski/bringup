@@ -71,7 +71,7 @@ def receive
   #   end
   # end
 
-  @sms_state = cookies[:sms_state]
+  @sms_state = session[:sms_state]
   if @sms_state.nil?
   @reply = Reply.new
     @reply.message_id = params["SmsSid"]
