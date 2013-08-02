@@ -71,7 +71,8 @@ def receive
   #   end
   # end
 
-  @sms_state ||= session[:sms_state]
+  sms_state = session[:sms_state]
+  if sms_state.nil?
     @reply = Reply.new
       @reply.message_id = params["SmsSid"]
       @reply.account_sid=params["AccountSid"]
@@ -79,7 +80,7 @@ def receive
       @reply.body=params["Body"]
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
-        respond_to do |format|
+      @respond_to do |format|
     if @reply.save
       #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
       format.xml{ render xml: @reply, status: :created, location: @reply }
@@ -90,14 +91,14 @@ def receive
   end
 
   get_first_nm(@reply.from)
-  @sms_state = 'welcome'
-    elsif @sms_state == 'welcome'
+  sms_state = 'welcome'
+    elsif sms_state == 'welcome'
       @reply.first_nm=params["Body"]
       get_last_nm(@reply.from)
-      @sms_state = 'first_nm'   
-    elsif @sms_state == 'first_nm'
+      sms_state = 'first_nm'   
+    elsif sms_state == 'first_nm'
       @reply.last_nm=params["Body"]
-      @sms_state = 'complete'
+      sms_state = 'complete'
   end
 
 end
