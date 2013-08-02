@@ -116,7 +116,6 @@ def get_first_nm(sendto)
     :to => to,
     :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
       ) 
-      puts "Sent message to #{value}"
 end
 
 def get_last_nm(sendto)
