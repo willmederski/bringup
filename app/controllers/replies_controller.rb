@@ -48,7 +48,7 @@ class RepliesController < ApplicationController
       @sms_state = 'complete'
     end
 
-    @respond_to do |format|
+    respond_to do |format|
       if @reply.save
         #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
         format.xml{ render xml: @reply, status: :created, location: @reply }
