@@ -2,7 +2,7 @@ BringUp::Application.routes.draw do
 
   resources :replies
 
-  post "replies/receive" => 'controller#receive', as: 'receive_text'
+  post "replies/receive" => 'replies#receive', as: 'receive_text'
 
 
   resources :parents
