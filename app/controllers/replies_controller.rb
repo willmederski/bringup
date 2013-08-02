@@ -72,7 +72,7 @@ def receive
   end
 
   @sms_state = session[:sms_state]
-  if state.nil?
+  if @sms_state.nil?
      @sms_state = 'welcome'
      get_first_nm
    elsif @sms_state == 'welcome'
@@ -94,10 +94,10 @@ def get_first_nm
   to = @reply.from
      
 
-      client.account.sms.messages.create(
-        :from => from,
-        :to => to,
-        :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
+  client.account.sms.messages.create(
+    :from => from,
+    :to => to,
+    :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
       ) 
       puts "Sent message to #{value}"
     end
