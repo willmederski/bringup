@@ -27,6 +27,28 @@ class RepliesController < ApplicationController
 
 
 
+  # def receive
+  #   @sms_state = session[:sms_state]
+  #   if @sms_state.nil?
+  #     @reply = Reply.new
+  #     @reply.message_id = params["SmsSid"]
+  #     @reply.account_sid=params["AccountSid"]
+  #     @reply.from=params["From"]
+  #     @reply.body=params["Body"]
+  #     @reply.status=params["SmsStatus"]
+  #     @reply.api_version=params["ApiVersion"]
+  #     get_first_nm(@reply.from)
+  #     @sms_state = 'welcome'
+  #   elsif @sms_state == 'welcome'
+  #     @reply.first_nm=params["Body"]
+  #     get_last_nm(@reply.from)
+  #     @sms_state = 'first_nm'   
+  #   elsif @sms_state == 'first_nm'
+  #     @reply.last_nm=params["Body"]
+  #     @sms_state = 'complete'
+  #   end
+
+
   def receive
     @sms_state = session[:sms_state]
     if @sms_state.nil?
@@ -38,15 +60,23 @@ class RepliesController < ApplicationController
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
       get_first_nm(@reply.from)
-      @sms_state = 'welcome'
+      session[:sms_state] = 'welcome'
     elsif @sms_state == 'welcome'
       @reply.first_nm=params["Body"]
       get_last_nm(@reply.from)
-      @sms_state = 'first_nm'   
+      session[:sms_state] = 'first_nm'   
     elsif @sms_state == 'first_nm'
       @reply.last_nm=params["Body"]
-      @sms_state = 'complete'
+      session[:sms_state] = 'complete'
     end
+
+
+
+
+
+
+
+
 
     respond_to do |format|
       if @reply.save
