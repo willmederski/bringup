@@ -51,17 +51,36 @@ class RepliesController < ApplicationController
 
 
 def receive
+  # @reply = Reply.new
+  # @reply.message_id = params["SmsSid"]
+  # @reply.account_sid=params["AccountSid"]
+  # @reply.from=params["From"]
+  # @reply.body=params["Body"]
+  # @reply.status=params["SmsStatus"]
+  # @reply.api_version=params["ApiVersion"]
+
+
+
+  # respond_to do |format|
+  #   if @reply.save
+  #     #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+  #     format.xml{ render xml: @reply, status: :created, location: @reply }
+  #   else
+  #     #format.html { render action: "new" }
+  #     format.xml { render xml: @reply.errors, status: :unprocessable_entity }
+  #   end
+  # end
+
+  @sms_state = session[:sms_state]
+  if @sms_state.nil?
   @reply = Reply.new
-  @reply.message_id = params["SmsSid"]
-  @reply.account_sid=params["AccountSid"]
-  @reply.from=params["From"]
-  @reply.body=params["Body"]
-  @reply.status=params["SmsStatus"]
-  @reply.api_version=params["ApiVersion"]
-
-
-
-  respond_to do |format|
+    @reply.message_id = params["SmsSid"]
+    @reply.account_sid=params["AccountSid"]
+    @reply.from=params["From"]
+    @reply.body=params["Body"]
+    @reply.status=params["SmsStatus"]
+    @reply.api_version=params["ApiVersion"]
+      respond_to do |format|
     if @reply.save
       #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
       format.xml{ render xml: @reply, status: :created, location: @reply }
@@ -70,9 +89,6 @@ def receive
       format.xml { render xml: @reply.errors, status: :unprocessable_entity }
     end
   end
-
-  @sms_state = session[:sms_state]
-  if @sms_state.nil?
      @sms_state = 'welcome'
      get_first_nm(@reply.from)
    elsif @sms_state == 'welcome'
@@ -110,7 +126,7 @@ def get_last_nm(sendto)
   to = sendto
      
 
-      client.account.sms.messages.create(
+  client.account.sms.messages.create(
         :from => from,
         :to => to,
         :body => "What is your last name?"
