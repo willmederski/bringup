@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
   require "time"
-  skip_before_filter :verify_authenticity_token, :only => [:receive]
-  skip_before_filter :authenticate_teacher!, :only => [:receive]
+  skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_teacher!
 
   # GET /replies
   # GET /replies.json
