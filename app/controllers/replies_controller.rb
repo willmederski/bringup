@@ -71,16 +71,15 @@ def receive
   #   end
   # end
 
-  @sms_state = session[:sms_state]
-  if @sms_state.nil?
-  @reply = Reply.new
-    @reply.message_id = params["SmsSid"]
-    @reply.account_sid=params["AccountSid"]
-    @reply.from=params["From"]
-    @reply.body=params["Body"]
-    @reply.status=params["SmsStatus"]
-    @reply.api_version=params["ApiVersion"]
-      respond_to do |format|
+  @sms_state ||= session[:sms_state]
+    @reply = Reply.new
+      @reply.message_id = params["SmsSid"]
+      @reply.account_sid=params["AccountSid"]
+      @reply.from=params["From"]
+      @reply.body=params["Body"]
+      @reply.status=params["SmsStatus"]
+      @reply.api_version=params["ApiVersion"]
+        respond_to do |format|
     if @reply.save
       #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
       format.xml{ render xml: @reply, status: :created, location: @reply }
