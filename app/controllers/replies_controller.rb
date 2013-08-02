@@ -86,7 +86,7 @@ def receive
 
 end
 
-def get_first_nm('sendto')
+def get_first_nm(sendto)
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_TOKEN']
   client = Twilio::REST::Client.new account_sid, auth_token
@@ -100,9 +100,9 @@ def get_first_nm('sendto')
     :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
       ) 
       puts "Sent message to #{value}"
-    end
+end
 
-  def get_last_nm('sendto')
+def get_last_nm(sendto)
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_TOKEN']
   client = Twilio::REST::Client.new account_sid, auth_token
@@ -116,7 +116,7 @@ def get_first_nm('sendto')
         :body => "What is your last name?"
       ) 
       puts "Sent message to #{value}"
-    end
+end
 
 #   if session[:sms_state] = 'welcome'
 #     @parent.first_nm = params["Body"]
