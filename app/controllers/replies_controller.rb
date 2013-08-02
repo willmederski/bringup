@@ -71,7 +71,7 @@ def receive
   #   end
   # end
 
-  @sms_state = session[:sms_state]
+  @sms_state = cookies[:sms_state]
   if @sms_state.nil?
   @reply = Reply.new
     @reply.message_id = params["SmsSid"]
@@ -89,15 +89,16 @@ def receive
       format.xml { render xml: @reply.errors, status: :unprocessable_entity }
     end
   end
-     @sms_state = 'welcome'
-     get_first_nm(@reply.from)
-   elsif @sms_state == 'welcome'
-    @reply.first_nm=params["Body"]
-    @sms_state = 'first_nm'
-    get_last_nm(@reply.from)
-  elsif @sms_state == 'first_nm'
-    @reply.last_nm=params["Body"]
-    @sms_state = 'complete'
+
+  get_first_nm(@reply.from)
+  @sms_state = 'welcome'
+    elsif @sms_state == 'welcome'
+      @reply.first_nm=params["Body"]
+      get_last_nm(@reply.from)
+      @sms_state = 'first_nm'   
+    elsif @sms_state == 'first_nm'
+      @reply.last_nm=params["Body"]
+      @sms_state = 'complete'
   end
 
 end
