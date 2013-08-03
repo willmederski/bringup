@@ -27,7 +27,7 @@ require 'twilio-ruby'
 
 # send_test_text
  
-def get_first_nm
+def welcome
 		account_sid = ENV['TWILIO_ACCOUNT_SID']
 		auth_token = ENV['TWILIO_TOKEN']
 		client = Twilio::REST::Client.new account_sid, auth_token
@@ -35,7 +35,7 @@ def get_first_nm
 		to = @reply.from
 		 
 		parents = {
-		"+15128261724" => "Lydia",
+		#"+15128261724" => "Lydia",
 		"+18323725189" => "Pati",
 		#"+12029069232" => "Will"
 		}
