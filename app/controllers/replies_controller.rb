@@ -62,12 +62,13 @@ class RepliesController < ApplicationController
       @reply.api_version=params["ApiVersion"]
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome"
+       session[:sms_state] = "first_nm"  
+       puts session[:sms_state]
       @reply.first_nm=params["Body"]
-      get_last_nm(@reply.from)
-      session[:sms_state] = "first_nm"  
+      get_last_nm(@reply.from)    
     elsif session[:sms_state] == "first_nm"
-      @reply.last_nm=params["Body"]
-      session[sms_state] = "complete"
+       session[sms_state] = "complete"
+      @reply.last_nm=params["Body"] 
     end
 
 
