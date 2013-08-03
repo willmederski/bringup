@@ -61,8 +61,7 @@ class RepliesController < ApplicationController
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
       get_first_nm(@reply.from)
-    elsif session[:sms_state] == "welcome"
-       session[:sms_state] = "first_nm"  
+    elsif session[:sms_state] == "welcome" 
        puts session[:sms_state]
       @reply.first_nm=params["Body"]
       get_last_nm(@reply.from)    
@@ -91,6 +90,7 @@ class RepliesController < ApplicationController
   end
 
   def get_first_nm(sendto)
+    session[:sms_state] = "first_nm"
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_TOKEN']
     client = Twilio::REST::Client.new account_sid, auth_token
