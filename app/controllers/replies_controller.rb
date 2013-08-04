@@ -51,8 +51,8 @@ class RepliesController < ApplicationController
 
   def receive
     if session[:sms_state].nil?
-      session[:sms_state] = "welcome"
-      puts session[:sms_state]
+      @sms_state=session[:sms_state]
+      puts @sms_state
       @reply = Reply.new
       @reply.message_id = params["SmsSid"]
       @reply.account_sid=params["AccountSid"]
@@ -60,15 +60,17 @@ class RepliesController < ApplicationController
       @reply.body=params["Body"]
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
+      @sms_state="welcome"
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
-       puts session[:sms_state]
-      @reply.first_nm=params["Body"]
-      get_last_nm(@reply.from)    
-    elsif session[:sms_state] == "first_nm"
-       session[sms_state] = "complete"
-      @reply.last_nm=params["Body"] 
-    end
+     puts session[:sms_state]
+     @reply.first_nm=params["Body"]
+     @sms_state="first"
+     get_last_nm(@reply.from)    
+   elsif session[:sms_state] == "first"
+     @sms_state = "complete"
+     @reply.last_nm=params["Body"] 
+   end
 
 
 
