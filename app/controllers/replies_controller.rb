@@ -61,7 +61,7 @@ class RepliesController < ApplicationController
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
       session[:sms_state]="first"
-      put session[:sms_state]
+      puts session[:sms_state]
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
      puts session[:sms_state]
