@@ -50,10 +50,9 @@ class RepliesController < ApplicationController
 
 
   def receive
-    set :sessions, true
     if session[:sms_state].nil?
-      @sms_state=session[:sms_state]
-      puts @sms_state
+      session[:sms_state]="welcome"
+      puts session[:sms_state]
       @reply = Reply.new
       @reply.message_id = params["SmsSid"]
       @reply.account_sid=params["AccountSid"]
@@ -61,12 +60,10 @@ class RepliesController < ApplicationController
       @reply.body=params["Body"]
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
-      @sms_state="welcome"
+      session[:sms_state]="first"
       put session[:sms_state]
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
-     puts session[:sms_state]
-     @sms_state="first"
      puts session[:sms_state]
      @reply.first_nm=params["Body"]
      get_last_nm(@reply.from)    
