@@ -50,6 +50,7 @@ class RepliesController < ApplicationController
 
 
   def receive
+    set :sessions, true
     if session[:sms_state].nil?
       @sms_state=session[:sms_state]
       puts @sms_state
@@ -61,6 +62,7 @@ class RepliesController < ApplicationController
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
       @sms_state="welcome"
+      put session[:sms_state]
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
      puts session[:sms_state]
