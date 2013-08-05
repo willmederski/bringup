@@ -50,6 +50,7 @@ class RepliesController < ApplicationController
 
 
   def receive
+    logger.debug "twilio sent: #{session[:sms_state]}"
     if session[:sms_state].nil?
       session[:sms_state]="welcome"
       @reply = Reply.new
@@ -59,11 +60,11 @@ class RepliesController < ApplicationController
       @reply.body=params["Body"]
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
-      session[:sms_state]="first"
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
      @reply.first_nm=params["Body"]
-     get_last_nm(@reply.from)    
+     get_last_nm(@reply.from)
+      session[:sms_state]="first"   
    elsif session[:sms_state] == "first"
      session[:sms_state] = "complete"
      @reply.last_nm=params["Body"] 
