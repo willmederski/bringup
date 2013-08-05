@@ -1,5 +1,8 @@
 class RepliesController < ApplicationController
   require "time"
+  skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_teacher!
+
   # GET /replies
   # GET /replies.json
   def index
@@ -20,77 +23,99 @@ class RepliesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @reply }
     end
-  end
+  end 
 
-  # GET /replies/new
-  # GET /replies/new.json
-  def new
-    @reply = Reply.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @reply }
-    end
-  end
 
-  # GET /replies/1/edit
-  def edit
-    @reply = Reply.find(params[:id])
-  end
+  # def receive
+  #   @sms_state = session[:sms_state]
+  #   if @sms_state.nil?
+  #     @reply = Reply.new
+  #     @reply.message_id = params["SmsSid"]
+  #     @reply.account_sid=params["AccountSid"]
+  #     @reply.from=params["From"]
+  #     @reply.body=params["Body"]
+  #     @reply.status=params["SmsStatus"]
+  #     @reply.api_version=params["ApiVersion"]
+  #     get_first_nm(@reply.from)
+  #     @sms_state = 'welcome'
+  #   elsif @sms_state == 'welcome'
+  #     @reply.first_nm=params["Body"]
+  #     get_last_nm(@reply.from)
+  #     @sms_state = 'first_nm'   
+  #   elsif @sms_state == 'first_nm'
+  #     @reply.last_nm=params["Body"]
+  #     @sms_state = 'complete'
+  #   end
 
-  # POST /replies
-  # POST /replies.json
-  def create
-    @reply = Reply.new
-    @reply.message_id = params["message_id"]
-    @reply.date_created=params["date_created"]
-    @reply.date_updated=params["date_updated"]
-    @reply..account_sid=params["account_sid"]
-    @reply.from=params["from"]
-    @reply.body=params["body"]
-    @reply.status=params["status"]
-    @reply.direction=params["direction"]
-    @reply.price=params["price"]
-    @reply.price_unit=params["price_unit"]
-    @reply.api_version=params["api_version"]
-    @reply.uri=params["uri"]
+
+  def receive
+    if session[:sms_state].nil?
+      session[:sms_state]="welcome"
+      @reply = Reply.new
+      @reply.message_id = params["SmsSid"]
+      @reply.account_sid=params["AccountSid"]
+      @reply.from=params["From"]
+      @reply.body=params["Body"]
+      @reply.status=params["SmsStatus"]
+      @reply.api_version=params["ApiVersion"]
+      session[:sms_state]="first"
+      get_first_nm(@reply.from)
+    elsif session[:sms_state] == "welcome" 
+     @reply.first_nm=params["Body"]
+     get_last_nm(@reply.from)    
+   elsif session[:sms_state] == "first"
+     @sms_state = "complete"
+     @reply.last_nm=params["Body"] 
+   end
+
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
-        format.json { render json: @reply, status: :created, location: @reply }
+        #format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+        format.xml{ render xml: @reply, status: :created, location: @reply }
       else
-        format.html { render action: "new" }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
+        #format.html { render action: "new" }
+        format.xml { render xml: @reply.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /replies/1
-  # PUT /replies/1.json
-  def update
-    @reply = Reply.find(params[:id])
+  def get_first_nm(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
 
-    respond_to do |format|
-      if @reply.update_attributes(params[:reply])
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
-      end
-    end
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "Welcome to BringUp!  Let's begin.  What is your first name?"
+    ) 
   end
 
-  # DELETE /replies/1
-  # DELETE /replies/1.json
-  def destroy
-    @reply = Reply.find(params[:id])
-    @reply.destroy
+  def get_last_nm(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
 
-    respond_to do |format|
-      format.html { redirect_to replies_url }
-      format.json { head :no_content }
-    end
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "What is your last name?"
+    ) 
+    puts "Sent message to #{value}"
   end
+
+
+
 end
+
+
+
+

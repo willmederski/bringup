@@ -2,12 +2,12 @@ BringUp::Application.routes.draw do
 
   resources :replies
 
+  post "replies/receive" => 'replies#receive', as: 'receive_text'
+
 
   resources :parents
 
 
-  #get "recipients/response"
-  #post "parents/response", to: controller#action
 
 
 
