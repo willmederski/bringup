@@ -60,9 +60,10 @@ class RepliesController < ApplicationController
     #@reply.status=params["SmsStatus"]
     @reply.api_version=params["ApiVersion"]
     if Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).present?
-      @parent=Parent.create
+      @parent=Parent.new
       @parent.phone_number=@reply.from
       @parent.class_code=@reply.body
+      @parent.save!
       get_first_nm(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "first_nm"
       @parent.first_name=@reply.body
