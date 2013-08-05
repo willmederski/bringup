@@ -81,6 +81,7 @@ class RepliesController < ApplicationController
         format.xml { render xml: @reply.errors, status: :unprocessable_entity }
       end
   end
+end
 
 
 
