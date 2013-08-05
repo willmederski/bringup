@@ -2,10 +2,10 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = Message.find_all_by_course_id(params[:course_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.erb]
       format.json { render json: @messages }
     end
   end
@@ -25,9 +25,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     require 'dates'
-    @message = Message.new
-    
-    @weekstart = MessageDates::execute
+    @message = Message.new(params[:message])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,34 +35,42 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
-    @message = Message.find(params[:id])
+    @course = Course.find(params[:course_id])
+    @message = @course.messages.find(params[:id])
   end
 
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    require 'dates'
+    @message1 = Message.new(:body => params["body1"],:course_id => params["course_id"],:send_date => params["date1"])
+    @message2 = Message.new(:body => params["body2"],:course_id => params["course_id"],:send_date => params["date2"])
+    @message3 = Message.new(:body => params["body3"],:course_id => params["course_id"],:send_date => params["date3"])
+    @message4 = Message.new(:body => params["body4"],:course_id => params["course_id"],:send_date => params["date4"])
+    @message5 = Message.new(:body => params["body5"],:course_id => params["course_id"],:send_date => params["date5"])
+    @message1.save
+    @message2.save
+    @message3.save
+    @message4.save
+    @message5.save
+    @message = @message1
     @weekstart = MessageDates::execute
+    puts "params: #{params}"
 
     respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Messages were successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+        format.html { redirect_to course_messages_path, notice: 'Messages were successfully created.' }
     end
   end
 
   # PUT /messages/1
   # PUT /messages/1.json
   def update
-    @message = Message.find(params[:id])
+    @course = Course.find(params[:course_id])
+    @message = @course.messages.find(params[:id])
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html { redirect_to course_messages_path(@course), notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,8 +86,34 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to course_messages_path }
       format.json { head :no_content }
     end
   end
+
+  def send_message
+    @message = params[:body]
+
+    # put your own credentials here
+    account_sid=ENV["TWILIO_ACCOUNT_SID"]
+    auth_token=ENV["TWILIO_TOKEN"]
+
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client.account.sms.messages.create(
+    :from => '+15128618455',
+    :to => '+15128261724',
+    :body => @message
+    )
+
+    respond_to do |format|
+        format.html { redirect_to course_messages_path, notice: 'Message was successfully sent.' }
+    end
+
+  end
+
+
+
+ 
 end

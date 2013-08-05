@@ -15,14 +15,32 @@ BringUp::Application.routes.draw do
   devise_for :teachers
 
   resources :teachers
-  resources :courses
-  resources :messages
+  resources :courses do
+    resources :messages
+  end
+
+  post '/courses/:course_id/messages' => 'messages#create', as: 'week_message'
+
+  match '/courses/:course_id/messages/send' => 'messages#send_message', as: 'send_message'
+
 
   root :to => "courses#index"
 
-  #recipients POST /recipients/response(.:format)      recipients#response
-
-# new_teacher_session GET    /teachers/sign_in(.:format)                     devise/sessions#new
+#                     replies GET    /replies(.:format)                              replies#index
+#                             POST   /replies(.:format)                              replies#create
+#                   new_reply GET    /replies/new(.:format)                          replies#new
+#                  edit_reply GET    /replies/:id/edit(.:format)                     replies#edit
+#                       reply GET    /replies/:id(.:format)                          replies#show
+#                             PUT    /replies/:id(.:format)                          replies#update
+#                             DELETE /replies/:id(.:format)                          replies#destroy
+#                     parents GET    /parents(.:format)                              parents#index
+#                             POST   /parents(.:format)                              parents#create
+#                  new_parent GET    /parents/new(.:format)                          parents#new
+#                 edit_parent GET    /parents/:id/edit(.:format)                     parents#edit
+#                      parent GET    /parents/:id(.:format)                          parents#show
+#                             PUT    /parents/:id(.:format)                          parents#update
+#                             DELETE /parents/:id(.:format)                          parents#destroy
+#         new_teacher_session GET    /teachers/sign_in(.:format)                     devise/sessions#new
 #             teacher_session POST   /teachers/sign_in(.:format)                     devise/sessions#create
 #     destroy_teacher_session DELETE /teachers/sign_out(.:format)                    devise/sessions#destroy
 #            teacher_password POST   /teachers/password(.:format)                    devise/passwords#create
@@ -56,8 +74,8 @@ BringUp::Application.routes.draw do
 #                      course GET    /courses/:id(.:format)                          courses#show
 #                             PUT    /courses/:id(.:format)                          courses#update
 #                             DELETE /courses/:id(.:format)                          courses#destroy
+#                week_message POST   /courses/:course_id/messages(.:format)          messages#create
 #                        root        /                                               courses#index
-
 
 
   # The priority is based upon order of creation:

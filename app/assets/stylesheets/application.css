@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require_tree .
  */
 
@@ -73,4 +74,28 @@ h1{
 
 .hidden{
 	display:none;
+}
+
+.message_form {
+	background-color:#e3e3e3;
+	width: 40%;
+	margin:auto;
+	margin-bottom: 15px;
+	padding: 1%;
+	padding-bottom:5px;
+	text-align:right;
+}
+
+textarea {
+	height: 60px;
+	width: 98%;
+	border: none;
+	margin:none;
+	resize: none;
+}
+
+.counter{
+	font-size:.8em;
+	color:gray;
+	font-style:italic;
 }

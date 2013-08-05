@@ -11,6 +11,9 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'sextant'
+	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 
@@ -31,6 +34,9 @@ gem 'devise'
 gem 'ui_datepicker-rails3'
 gem 'formtastic'
 gem 'twilio-ruby'
+gem 'figaro'
+gem 'jquery-ui-rails'
+
 gem 'rabl'
 gem "localtunnel", "~> 0.3"
 # To use ActiveModel has_secure_password

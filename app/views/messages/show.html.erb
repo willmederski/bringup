@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<form class="Messages" action="<%=url_for(send_message_path)%>" method="post">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<input name="body" type="hidden" value="<%= @message.body %>">
+
 <p>
   <b>Course:</b>
   <%= @message.course_id %>
@@ -15,6 +19,12 @@
   <%= @message.send_date %>
 </p>
 
+<div class="actions">
+    <input type="submit" value="Send Message" class="submit">
+  </div>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+</form>
+
+<%= link_to 'Edit', edit_course_message_path(@message) %> |
+<%= link_to 'Back', course_messages_path %>
+

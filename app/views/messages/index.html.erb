@@ -1,7 +1,9 @@
+<div class="formcard">
 <h1>Listing messages</h1>
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Course</th>
     <th>Body</th>
     <th>Send date</th>
@@ -12,17 +14,28 @@
 
 <% @messages.each do |message| %>
   <tr>
+    <td><%= message.id %></td>
     <td><%= message.course_id %></td>
     <td><%= message.body %></td>
     <td><%= message.send_date %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', "/courses/"+message.course_id.to_s+"/messages/"+message.id.to_s %></td>
+    <td><%= link_to 'Edit', "/courses/"+message.course_id.to_s+"/messages/"+message.id.to_s+"/edit"  %></td>
+    <td><%= link_to 'Destroy', "/courses/"+message.course_id.to_s+"/messages/"+message.id.to_s , method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Message', new_message_path %>
+<%= link_to 'New Message', new_course_message_path %>
+<%= link_to 'Back', "/courses" %>
+</div>
+
+<!--              course_messages GET    /courses/:course_id/messages(.:format)          messages#index
+                             POST   /courses/:course_id/messages(.:format)          messages#create
+          new_course_message GET    /courses/:course_id/messages/new(.:format)      messages#new
+         edit_course_message GET    /courses/:course_id/messages/:id/edit(.:format) messages#edit
+              course_message GET    /courses/:course_id/messages/:id(.:format)      messages#show
+                             PUT    /courses/:course_id/messages/:id(.:format)      messages#update
+                             DELETE /courses/:course_id/messages/:id(.:format)      messages#destroy -->
 

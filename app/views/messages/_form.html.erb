@@ -1,26 +1,15 @@
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+<form class="Messages" action="<%=url_for([@course,@message])%>" method="post">
+  <div class="form_div">
+    <input name="_method" type="hidden" value="put" />
+    <p><%=@message.course_id%></p>
+    <p><%=@message.id%></p>
+    <p><%=@message.send_date%></p>
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <%= text_area_tag 'message[body]', @message.body %>
+  </div>    
 
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="actions">
+    <input type="submit" value="Submit" class="submit">
+  </div>
 
-    <% i=1 %>
-    <% while i<=5 do %>
-      <div class="field">
-        <%= f.label (@weekstart + i*(60*60*24)) %><br />
-        <%= f.text_field :body %>
-      </div>
-      <% i+=1 %>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+</form>
