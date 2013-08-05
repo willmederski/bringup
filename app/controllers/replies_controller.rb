@@ -67,12 +67,12 @@ class RepliesController < ApplicationController
       @parent.save!
       get_first_nm(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "first_nm"
-      @parent=Parent.find_by_phone_number(@reply.from).state
+      @parent=Parent.find_by_phone_number(@reply.from)
       @parent.first_nm = @reply.body
       @parent.added_first_name
       get_last_nm(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "last_nm"
-      @parent=Parent.find_by_phone_number(@reply.from).state
+      @parent=Parent.find_by_phone_number(@reply.from)
       @parent.last_nm = @reply.body   
       @parent.added_last_name   
     end
