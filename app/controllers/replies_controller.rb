@@ -50,25 +50,26 @@ class RepliesController < ApplicationController
 
 
   def receive
-    logger.debug "twilio session: #{session}"
-    if session[:sms_state].nil?
-      session[:sms_state]="welcome"
-      @reply = Reply.new
-      @reply.message_id = params["SmsSid"]
-      @reply.account_sid=params["AccountSid"]
-      @reply.from=params["From"]
-      @reply.body=params["Body"]
-      @reply.status=params["SmsStatus"]
-      @reply.api_version=params["ApiVersion"]
+    # 1. set a @parent based on phone number and/or course number if they exist
+    # 2/ you then move on to the next state on the parent
+    @reply = Reply.new
+    @reply.message_id = params["SmsSid"]
+    @reply.account_sid=params["AccountSid"]
+    @reply.from=params["From"]
+    @reply.body=params["Body"]
+    @reply.status=params["SmsStatus"]
+    @reply.api_version=params["ApiVersion"]
+    if Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).nil?
+      @parent=Parent.new
+      @parent.phone_number=@reply.from
+      @parent.course_id=@.reply.body
       get_first_nm(@reply.from)
-    elsif session[:sms_state] == "welcome" 
-     @reply.first_nm=params["Body"]
-     get_last_nm(@reply.from)
-      session[:sms_state]="first"   
-   elsif session[:sms_state] == "first"
-     session[:sms_state] = "complete"
-     @reply.last_nm=params["Body"] 
-   end
+    elsif Parent.find_by_phone_number(@reply.from).state == "first_nm"
+      @parent.first_name=@reply.body
+      get_last_nm(@reply.from)
+    elsif Parent.find_by_phone_number(@reply.from).state == "last_nm"
+      @parent.last_name=@reply.body      
+    end
 
 
     respond_to do |format|
@@ -79,13 +80,9 @@ class RepliesController < ApplicationController
         #format.html { render action: "new" }
         format.xml { render xml: @reply.errors, status: :unprocessable_entity }
       end
-    end
   end
 
-  def find_by_course_num
-    
-    
-  end
+
 
   def get_first_nm(sendto)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
