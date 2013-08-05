@@ -1,0 +1,26 @@
+<div class="formcard">
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <b>Twilio:</b>
+	  <%= @course.twilio_id %>
+	</p>
+
+	<p>
+	  <b>Name:</b>
+	  <%= @course.name %>
+	</p>
+
+<<<<<<< HEAD
+	
+
+	<%= render 'messages' %>
+
+	<%= link_to 'Messages', course_messages_path(@course) %>
+=======
+	<%= link_to 'Messages', messages_path %> |
+>>>>>>> f7fe77cbfcf117e50f38d175b766febb70a5d216
+	<%= link_to 'Edit', edit_course_path(@course) %> |
+	<%= link_to 'Back', courses_path %>
+
+</div>
