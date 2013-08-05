@@ -57,7 +57,7 @@ class RepliesController < ApplicationController
     @reply.account_sid=params["AccountSid"]
     @reply.from=params["From"]
     @reply.body=params["Body"]
-    @reply.status=params["SmsStatus"]
+    #@reply.status=params["SmsStatus"]
     @reply.api_version=params["ApiVersion"]
     if Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).present?
       @parent=Parent.create
