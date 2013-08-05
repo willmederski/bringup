@@ -62,7 +62,7 @@ class RepliesController < ApplicationController
     if Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).exists?
       @parent=Parent.new
       @parent.phone_number=@reply.from
-      @parent.course_id=@.reply.body
+      @parent.course_id=@reply.body
       get_first_nm(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "first_nm"
       @parent.first_name=@reply.body
