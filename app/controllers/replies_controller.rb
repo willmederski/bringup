@@ -65,7 +65,7 @@ class RepliesController < ApplicationController
      @reply.first_nm=params["Body"]
      get_last_nm(@reply.from)    
    elsif session[:sms_state] == "first"
-     @sms_state = "complete"
+     session[:sms_state] = "complete"
      @reply.last_nm=params["Body"] 
    end
 
@@ -79,6 +79,11 @@ class RepliesController < ApplicationController
         format.xml { render xml: @reply.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def find_by_course_num
+    
+    
   end
 
   def get_first_nm(sendto)
