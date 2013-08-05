@@ -50,7 +50,7 @@ class RepliesController < ApplicationController
 
 
   def receive
-    logger.debug "twilio sent: #{session[:sms_state]}"
+    logger.debug "twilio session: #{session}"
     if session[:sms_state].nil?
       session[:sms_state]="welcome"
       @reply = Reply.new
