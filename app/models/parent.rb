@@ -1,5 +1,5 @@
 class Parent < ActiveRecord::Base
-  attr_accessible :child_nm, :class_code, :delivery_time, :first_nm, :last_nm, :phone_number, :relationship
+  attr_accessible :child_nm, :class_code, :delivery_time, :first_nm, :last_nm, :phone_number, :relationship, :state
   state_machine initial: :course_num_and_phone do
  		event :added_course_number_and_phone do
 	 		transition :course_num_and_phone=> :first_nm
