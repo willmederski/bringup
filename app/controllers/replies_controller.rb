@@ -52,7 +52,6 @@ class RepliesController < ApplicationController
   def receive
     if session[:sms_state].nil?
       session[:sms_state]="welcome"
-      puts session[:sms_state]
       @reply = Reply.new
       @reply.message_id = params["SmsSid"]
       @reply.account_sid=params["AccountSid"]
@@ -61,23 +60,14 @@ class RepliesController < ApplicationController
       @reply.status=params["SmsStatus"]
       @reply.api_version=params["ApiVersion"]
       session[:sms_state]="first"
-      puts session[:sms_state]
       get_first_nm(@reply.from)
     elsif session[:sms_state] == "welcome" 
-     puts session[:sms_state]
      @reply.first_nm=params["Body"]
      get_last_nm(@reply.from)    
    elsif session[:sms_state] == "first"
      @sms_state = "complete"
      @reply.last_nm=params["Body"] 
    end
-
-
-
-
-
-
-
 
 
     respond_to do |format|
