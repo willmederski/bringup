@@ -135,7 +135,6 @@ end
       :to => to,
       :body => "What is your last name?"
     ) 
-    puts "Sent message to #{value}"
   end
 
 def get_last_nm(sendto)
@@ -151,7 +150,7 @@ def get_last_nm(sendto)
       :to => to,
       :body => "What is your last name?"
     ) 
-    puts "Sent message to #{value}"
+
   end
 
   def get_child_nm(sendto)
@@ -167,7 +166,6 @@ def get_last_nm(sendto)
       :to => to,
       :body => "What is the name of the child?"
     ) 
-    puts "Sent message to #{value}"
   end
 
   def get_relationship(sendto)
@@ -183,7 +181,7 @@ def get_last_nm(sendto)
       :to => to,
       :body => "What is your relationship to the child?"
     ) 
-    puts "Sent message to #{value}"
+
   end
 
    def send_sign_off(sendto)
@@ -199,7 +197,7 @@ def get_last_nm(sendto)
       :to => to,
       :body => "Thank you.  We have all the information we need."
     ) 
-    puts "Sent message to #{value}"
+
   end
 
 end
