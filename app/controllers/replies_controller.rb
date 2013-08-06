@@ -184,6 +184,22 @@ def get_last_nm(sendto)
 
   end
 
+    def get_delivery_time(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
+
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "What time would you like your message delivered?  Enter 4, 5 or 6."
+    ) 
+
+  end
+
    def send_sign_off(sendto)
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_TOKEN']
