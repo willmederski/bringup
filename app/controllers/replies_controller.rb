@@ -78,17 +78,17 @@ class RepliesController < ApplicationController
       get_child_nm(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "child_nm"
       @parent=Parent.find_by_phone_number(@reply.from)
-      @parent.last_nm = @reply.body   
-      @parent.added_child_nm 
+      @parent.child_nm = @reply.body   
+      @parent.added_child_name
       get_relationship(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "relationship"
       @parent=Parent.find_by_phone_number(@reply.from)
-      @parent.last_nm = @reply.body   
+      @parent.relationship = @reply.body   
       @parent.added_relationship
       get_delivery_time(@reply.from)
     elsif Parent.find_by_phone_number(@reply.from).state == "delivery_time"
       @parent=Parent.find_by_phone_number(@reply.from)
-      @parent.last_nm = @reply.body   
+      @parent.delivery_time = @reply.body   
       @parent.added_delivery_time
       send_sign_off
     end
