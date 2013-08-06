@@ -74,7 +74,23 @@ class RepliesController < ApplicationController
     elsif Parent.find_by_phone_number(@reply.from).state == "last_nm"
       @parent=Parent.find_by_phone_number(@reply.from)
       @parent.last_nm = @reply.body   
-      @parent.added_last_name   
+      @parent.added_last_name
+      get_child_nm(@reply.from)
+    elsif Parent.find_by_phone_number(@reply.from).state == "child_nm"
+      @parent=Parent.find_by_phone_number(@reply.from)
+      @parent.last_nm = @reply.body   
+      @parent.added_child_nm 
+      get_relationship(@reply.from)
+    elsif Parent.find_by_phone_number(@reply.from).state == "relationship"
+      @parent=Parent.find_by_phone_number(@reply.from)
+      @parent.last_nm = @reply.body   
+      @parent.added_relationship
+      get_delivery_time(@reply.from)
+    elsif Parent.find_by_phone_number(@reply.from).state == "delivery_time"
+      @parent=Parent.find_by_phone_number(@reply.from)
+      @parent.last_nm = @reply.body   
+      @parent.added_delivery_time
+      send_sign_off
     end
 
 
@@ -122,7 +138,69 @@ end
     puts "Sent message to #{value}"
   end
 
+def get_last_nm(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
 
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "What is your last name?"
+    ) 
+    puts "Sent message to #{value}"
+  end
+
+  def get_child_nm(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
+
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "What is the name of the child?"
+    ) 
+    puts "Sent message to #{value}"
+  end
+
+  def get_relationship(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
+
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "What is your relationship to the child?"
+    ) 
+    puts "Sent message to #{value}"
+  end
+
+   def send_sign_off(sendto)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_TOKEN']
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15128618455" # Your Twilio number
+    to = sendto
+
+
+    client.account.sms.messages.create(
+      :from => from,
+      :to => to,
+      :body => "Thank you.  We have all the information we need."
+    ) 
+    puts "Sent message to #{value}"
+  end
 
 end
 
