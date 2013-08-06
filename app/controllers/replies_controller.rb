@@ -90,7 +90,7 @@ class RepliesController < ApplicationController
       @parent=Parent.find_by_phone_number(@reply.from)
       @parent.delivery_time = @reply.body   
       @parent.added_delivery_time
-      send_sign_off
+      send_sign_off(@reply.from)
     end
 
 
