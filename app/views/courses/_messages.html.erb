@@ -1,16 +1,23 @@
 <form class="Messages" action="<%=url_for([@course,@message])%>" method="post">
   <div class="form_div">
     
-    <h3> This Week's Parent Messages </h3>
+    <ul class="bar">
+      <li class= "weeknav" id="lastweek"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></li>
+      <% start = Time.zone.now %>
+      <li><h3><%= weekday_for_week(start, :mon).strftime("%m/%d")+" - "+(weekday_for_week(start, :mon)+6.days).strftime("%m/%d") %></h3></li>
+      <li class="weeknav" id="nextweek"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></li>
+    </ul>
+
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
     <% [:mon, :tue, :wed, :thu, :fri].each_with_index do |weekday, index| %>
       <% date_id     = "date#{index + 1}" %>
       <% body_id     = "body#{index + 1}" %>
-      <% day_of_week = weekday_for_week(Time.zone.now, weekday) %>
+      <% counter_id  = "counter#{index + 1}" %>
+      <% day_of_week = weekday_for_week(start, weekday) %>
 
       <div class="message_form">
-        <span class="counter"></span>
+        <span class="<%= counter_id %>"></span>
         <% if @course.messages.find_by_send_date(day_of_week.to_date) %>
           <textarea id="<%= body_id %>" name="<%= body_id %>"><%=@course.messages.find_by_send_date(day_of_week.to_date).body%></textarea>
         <% else %>

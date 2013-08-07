@@ -7,13 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="header">
+	<div id="landing_header">
 		<h1><%= link_to 'bringup', :root %></h1>
 		<div class="navbar">
 			<% if current_teacher.present? %>
-				Welcome, <%=current_teacher.full_name%> |
+				Welcome, <%=current_teacher.full_name%>  |  
+				<%= link_to 'My Account', course_path(current_teacher.courses.first.id) %>  |  
 				<%= link_to 'About', '#' %>  |  
-				<%= link_to 'Contact', '#' %>  | 
+				<%= link_to 'Contact', '#' %>  |  
 		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
 			<% else %>
 				<%= link_to 'About', '#' %>  |  
@@ -24,12 +25,7 @@
 		</div>
 	</div>
 
-	<div class="card">
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
-
 		<%= yield %>
-	</div>
 
 </body>
 </html>

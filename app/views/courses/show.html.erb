@@ -1,22 +1,37 @@
-<div class="formcard">
-	<p id="notice"><%= notice %></p>
+<div class="coursewrapper">
+	<div class="leftcard">
+		<% current_teacher.courses.each do |course| %>
+			<% if course.name == @course.name %>
+				<div class= "courseselect">
+					<%= link_to course.name, course %>
+				</div>
+			<% else %>
+				<div class= "courselist">
+					<%= link_to course.name, course %>
+				</div>
+			<% end %>
+		<% end %>
+		<div class= "courselist">
+			<%= link_to '+ Add Course', new_course_path %>
+		</div>
+	</div>
 
-	<p>
-	  <b>Twilio:</b>
-	  <%= @course.twilio_id %>
-	</p>
+	<div class="centercard">
+		<p id="notice"><%= notice %></p>
+		
 
-	<p>
-	  <b>Name:</b>
-	  <%= @course.name %>
-	</p>
+		<%= render 'messages' %>
 
-	
+		<%= link_to 'Messages', course_messages_path(@course) %>
+		<%= link_to 'Edit', edit_course_path(@course) %> |
+		<%= link_to 'Back', courses_path %>
 
-	<%= render 'messages' %>
+	</div>
 
-	<%= link_to 'Messages', course_messages_path(@course) %>
-	<%= link_to 'Edit', edit_course_path(@course) %> |
-	<%= link_to 'Back', courses_path %>
+	<div class = "rightcard">
+		<div class = "datepicker">
+		</div>
+	</div>
 
+	<div style="display: block; clear: both;"></div>
 </div>
