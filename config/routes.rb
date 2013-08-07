@@ -22,12 +22,14 @@ BringUp::Application.routes.draw do
     resources :messages
   end
 
+  get '/pages/index' => 'pages#index'
+
   post '/courses/:course_id/messages' => 'messages#create', as: 'week_message'
 
   match '/courses/:course_id/messages/send' => 'messages#send_message', as: 'send_message'
 
 
-  root :to => "courses#index"
+  root :to => "pages#index"
 
 #                     replies GET    /replies(.:format)                              replies#index
 #                             POST   /replies(.:format)                              replies#create

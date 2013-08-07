@@ -8,9 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require jquery.ui.all
  *= require_tree .
+ *= require_self
  */
 
 /*colors:
@@ -39,37 +39,48 @@ body {
 .card {
 	background-color: #009092;
 	text-align:center;
+	min-width:900px;
 	width:80%;
 	border-radius:10px;
 	box-shadow: 5px 5px 10px gray;
 	margin:auto;
-	padding-top:150px;
+	padding-top:100px;
 	padding-bottom:100px;
-	margin-top:8px;
+	margin-top:-90px;
 }
 
 #header {
 	background-color: #FF9200;
-	position:fixed;
-	margin-top:30px;
+	margin-top:50px;
 	height:50px;
 	width:100%;
 	color:white;
 	box-shadow: 0 5px 10px gray;
 	text-align: left;
-	padding-left:11%;
 	font-family: 'Raleway', sans-serif;
+	position: relative;
 }
 
 .navbar{
 	float:right;
-	margin-right:22%;
+	margin-right:11%;
 	margin-top: -35px;
 }
 
 h1{
 	font-size:2.5em;
 	margin-top:15px;
+	padding-top: 15px;
+}
+
+#header h1 a{
+	color:white;
+	margin-left:11%;
+}
+
+h3{
+	margin:0px;
+	padding:5px;
 }
 
 .hidden{
@@ -78,9 +89,9 @@ h1{
 
 .message_form {
 	background-color:#e3e3e3;
-	width: 40%;
+	width: 90%;
 	margin:auto;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	padding: 1%;
 	padding-bottom:5px;
 	text-align:right;
@@ -94,8 +105,170 @@ textarea {
 	resize: none;
 }
 
-.counter{
+.counter1, .counter2, .counter3, .counter4, .counter5 {
 	font-size:.8em;
 	color:gray;
 	font-style:italic;
 }
+
+.coursewrapper {
+	text-align:center;
+	margin:auto;
+	width: 890px;
+}
+
+.rightcard {
+	width: 25%;
+	text-align:center;
+	float: left;
+	margin-left: 1%;
+}
+
+.centercard {
+	width: 40%;
+	background-color: white;
+	float: left;
+	margin-left: 1%;
+}
+
+.leftcard {
+	width: 25%;
+	float: left;
+	margin-left: 1%;
+}
+
+.courseselect {
+	background-color: white;
+	font-family: 'Raleway', sans-serif;
+	font-style:bold;
+	text-align:left;
+	padding-left: 10px;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-right: -50px;
+	padding-top: 25px;
+	height: 40px;
+	font-size: 1.25em;
+}
+
+.courselist {
+	background-color: white;
+	font-family: 'Raleway', sans-serif;
+	margin: auto;
+	margin-bottom: 10px;
+	padding-top: 25px;
+	height: 40px;
+	font-size: 1.25em;
+	text-align:left;
+	padding-left: 10px;
+}
+
+
+
+a {
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+
+.bar {
+	list-style-type:none;
+	background-color:#8BC9CA;
+	width:92%;
+	height: 32px;
+	margin:auto;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+.bar li {
+	display:inline-block;
+	padding:5px;
+	margin-top:-2px;
+}
+
+.weeknav:hover {
+	background-color:#e3e3e3;
+	border-radius:3px;
+	padding:5px;
+
+}
+
+.ui-widget-header {
+	border:none;
+	background:none;
+	border-radius:0;
+	background-color:#8BC9CA;
+}
+
+.ui-datepicker-inline {
+	border:none;
+	padding:15px;
+	border-radius:0;
+	text-align:center;
+	margin:auto;
+}
+
+.selectedDate {
+	background-color:#8BC9CA;
+}
+
+#landing_header {
+	background-color: #e3e3e3;
+	margin-top:-15px;
+	height:50px;
+	width:100%;
+	color:#009092;
+	text-align: left;
+	font-family: 'Raleway', sans-serif;
+	position: relative;
+}
+
+#landing_header .navbar{
+	margin-right:5%;
+}
+
+#landing_header h1 a{
+	color:#009092;
+	margin-left:11%;
+}
+
+#landing_banner {
+	margin:10%;
+}
+
+#banner{
+	color:#FF9200;
+	font-family: 'Raleway', sans-serif;
+	font-size:8em;
+}
+
+#banner_text1,#banner_text2{
+	color:#009092;
+	font-family: 'Raleway', sans-serif;
+	font-size:2em;
+}
+
+#quote_slides{
+	border: 1px solid #e3e3e3;
+	width:50%;
+	height:40%;
+	margin:auto;
+	padding:3%;
+}
+
+#landing_body {
+	background-color:#8BC9CA;
+	width:100%;
+}
+
+#landing_footer {
+
+}
+
+#landing_body img {
+	width:20%;
+	margin:3%;
+}
+
+

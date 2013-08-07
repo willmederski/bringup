@@ -16,21 +16,113 @@
 //= require_tree .
 
 $(document).ready(function()  {
+
     var characters = 120;
-    $(".counter").append(characters+" left");
-    $("textarea").keyup(function(){
+    var remaining = characters -  $("#body1").val().length;
+    $(".counter1").append(remaining+" left");
+    $("#body1").keyup(function(){
         if($(this).val().length > characters){
         $(this).val($(this).val().substr(0,characters));
         }
     var remaining = characters -  $(this).val().length;
-    $(".counter").html(remaining+" left");
+    $(".counter1").html(remaining+" left");
     if(remaining <= 20)
     {
-        $(".counter").css("color","red");
+        $(".counter1").css("color","red");
     }
     else
     {
-        $(".counter").css("color","black");
+        $(".counter1").css("color","black");
     }
     });
+
+
+
+    var characters = 120;
+    var remaining = characters -  $("#body2").val().length;
+    $(".counter2").append(remaining+" left");
+    $("#body2").keyup(function(){
+        if($(this).val().length > characters){
+        $(this).val($(this).val().substr(0,characters));
+        }
+    var remaining = characters -  $(this).val().length;
+    $(".counter2").html(remaining+" left");
+    if(remaining <= 20)
+    {
+        $(".counter2").css("color","red");
+    }
+    else
+    {
+        $(".counter2").css("color","black");
+    }
+    });
+
+
+
+    var characters = 120;
+    var remaining = characters -  $("#body3").val().length;
+    $(".counter3").append(remaining+" left");
+    $("#body3").keyup(function(){
+        if($(this).val().length > characters){
+        $(this).val($(this).val().substr(0,characters));
+        }
+    var remaining = characters -  $(this).val().length;
+    $(".counter3").html(remaining+" left");
+    if(remaining <= 20)
+    {
+        $(".counter3").css("color","red");
+    }
+    else
+    {
+        $(".counter3").css("color","black");
+    }
+    });
+
+
+
+    var characters = 120;
+    var remaining = characters -  $("#body4").val().length;
+    $(".counter4").append(remaining+" left");
+    $("#body4").keyup(function(){
+        if($(this).val().length > characters){
+        $(this).val($(this).val().substr(0,characters));
+        }
+    var remaining = characters -  $(this).val().length;
+    $(".counter4").html(remaining+" left");
+    if(remaining <= 20)
+    {
+        $(".counter4").css("color","red");
+    }
+    else
+    {
+        $(".counter4").css("color","black");
+    }
+    });
+
+
+
+    var characters = 120;
+    var remaining = characters -  $("#body5").val().length;
+    $(".counter5").append(remaining+" left");
+    $("#body5").keyup(function(){
+        if($(this).val().length > characters){
+        $(this).val($(this).val().substr(0,characters));
+        }
+    var remaining = characters -  $(this).val().length;
+    $(".counter5").html(remaining+" left");
+        if(remaining <= 20)
+        {
+            $(".counter5").css("color","red");
+        }
+        else
+        {
+            $(".counter5").css("color","black");
+        }
+    });
+
+
+    $(function() {
+      $('.datepicker').datepicker();
+    });
+
 });
