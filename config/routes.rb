@@ -16,6 +16,9 @@ BringUp::Application.routes.draw do
 
   resources :teachers
   resources :courses do
+    member do
+      get :generate_pdf
+    end
     resources :messages
   end
 

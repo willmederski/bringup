@@ -84,4 +84,36 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def generate_pdf
+    pdf = Prawn::Document.new
+    # pdf.text "Receive Free Daily Classroom Update", :align => :center, :size => 18
+    # pdf.move_down 5
+    # pdf.text "Bring Up", :align => :center, :size => 14
+    # pdf.move_down 12
+    # pdf.column_box([0, cursor], :columns => 2, :width => pdf.bounds.width) do
+    #   text(<<-END
+    #     Studies show that just asking your child how their school day was 
+    #     and showing genuine interest in the learning that they are doing
+    #     can have the same impact as hours of private tutoring!
+
+    #     Sign up to receive classroom recaps from your student's teacher
+    #     every evening via SMS text message.
+
+    #     We will text you the necessary information to help you talk with
+    #     your child about what they did in school every night.
+
+    #     See www.bringuptogether.com for more information.
+
+    #   END
+    #   )
+    # end
+    pdf.text "Hello World"
+
+    pdf_file_name = File.join(Rails.root, "public/pdfs", "course.pdf")
+
+    pdf.render_file pdf_file_name
+
+    send_file pdf_file_name
+  end
 end

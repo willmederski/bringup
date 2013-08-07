@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-  attr_accessible :email, :full_name, :phone, :preferred_name, :principal_name, :school, :password, :password_confirmation
+  attr_accessible :email, :full_name, :phone, :preferred_name, :principal_name, :school, :password, :password_confirmation, :remember_me
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, :full_name, :phone, :preferred_name, :principal_name, :school, :password, :password_confirmation, presence: true
