@@ -137,7 +137,8 @@ textarea {
 	background-color:#8BC9CA;
 	width:90%;
 	padding:0;
-	padding-top:10px;
+	padding-top:7px;
+	padding-bottom:7px;
 	margin:auto;
 	margin-bottom:10px;
 }
