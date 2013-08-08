@@ -1,3 +1,5 @@
+<div id='messages-url' data-url='<%= course_messages_path(@course, format: 'json') %>'></div>
+
 <div class="coursewrapper">
 	<div class="leftcard">
 		<% current_teacher.courses.each do |course| %>
@@ -71,31 +73,31 @@
 <script type='text/javascript'>
 	$(document).ready(function()  {
 
-	    $.getJSON('/courses/<%= @course.id %>/messages.json', function(data) {
+	    /*$.getJSON('/courses/<%= @course.id %>/messages.json', function(data) {
 	        var x = [];
-	        console.log(data);
-	        console.log('/courses/<%= @course.id %>/messages.json');
+	        //console.log(data);
+	        //console.log('/courses/<%= @course.id %>/messages.json');
 	 
 	        for(i=0;i<data.length;i++){
 	            x.push(data[i].send_date);
 	        };
 
-	        console.log(x);
+	        //console.log(x);
 
 	        $('body').append(x);
 
 	        for(i=0;i<data.length;i++){
 	            var mdate = x[i];
-	            console.log(mdate);
+	            //console.log(mdate);
 	            var dates = $('.ui-state-default');
 	            for( j=0;j<dates.length;j++) {
-	            	console.log((dates[j].parentElement.dataset.year) + "-0" + (dates[j].parentElement.dataset.month) + "-0" + (dates[j].text));
+	            	//console.log((dates[j].parentElement.dataset.year) + "-0" + (dates[j].parentElement.dataset.month) + "-0" + (dates[j].text));
 	                if (((dates[j].parentElement.dataset.year) + "-0" + (dates[j].parentElement.dataset.month) + "-0" + (dates[j].text)) === mdate){
 	                    dates[j].css("color","red");
 	                };
 	            };
 	        };
-	    }); 
+	    }); */
 
 	$( "#nextweek" ).click(function(){
 		$(".week_messages").effect( "slide", {direction:'right'}, 500, callback );

@@ -1,0 +1,14 @@
+  <!-- date_id     = "date#{index + 1}"
+  body_id     = "body#{index + 1}"
+  counter_id  = "counter#{index + 1}"
+  day_of_week = weekday_for_week(start, weekday) -->
+
+<% for message in @messages.models: %>
+  <div class="message_form">
+    <span class="body1"></span>
+    <textarea id='body1' name='body1'><%= message.get('body') %></textarea>
+    </br>
+    <input name='date1' type="hidden" value='mon'>
+    <label for='body'>Monday</label>
+  </div>
+<% end %>

@@ -4,7 +4,13 @@ window.BringUp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    this.messages = new BringUp.Collections.Messages;
+    var view = new BringUp.Views.MessagesIndex({ collection: this.messages });
+    this.messages.fetch({
+      success: function(){
+        $('#messages-list').html(view.render().el);
+      }
+    });
   }
 };
 

@@ -25,7 +25,7 @@
 
 $(document).ready(function()  {
 
-    $.fn.counterField = function() {
+    /*$.fn.counterField = function() {
       var characters = 120;
       var $counter = $(this).siblings('span');
       var remaining = characters -  $(this).val().length;
@@ -51,7 +51,7 @@ $(document).ready(function()  {
     $('#body2').counterField();
     $('#body3').counterField();
     $('#body4').counterField();
-    $('#body5').counterField();
+    $('#body5').counterField();*/
 
     $(function() {
       $('.datepicker').datepicker();
