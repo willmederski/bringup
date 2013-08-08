@@ -1,5 +1,4 @@
 class CoursePdf < Prawn::Document
-	require 'prawn'
 
   # 
   # 

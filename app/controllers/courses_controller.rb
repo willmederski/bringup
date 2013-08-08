@@ -99,7 +99,8 @@ class CoursesController < ApplicationController
     pdf.bounding_box([250, 675], :width => 200, :height => 100) do
       pdf.text "Sign Up for FREE!", :align => :center, :size => 18, :font_color => "FF9200"
         end 
-    pdf.bounding_box([20, 660], :width => 200, :height => 400) do
+    pdf.move_down 20    
+    pdf.bounding_box([20, 0], :width => 200, :height => 400) do
       pdf.text "Studies show that just asking your child how their school day was and showing genuine interest in the learning they are doing can have the same impact as hours of private tutoring.", :align => :left, :size => 11, :font_color => "FF9200"
         end
     #pdf.move_down 260
