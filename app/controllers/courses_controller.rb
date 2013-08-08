@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
+      
     end
   end
 
@@ -100,8 +101,8 @@ class CoursesController < ApplicationController
     pdf.bounding_box([20, 660], :width => 200, :height => 400) do
       pdf.text "Studies show that just asking your child how their school day was and showing genuine interest in the learning they are doing can have the same impact as hours of private tutoring.", :align => :left, :size => 11, :font_color => "FF9200"
         end
-    pdf.move_down 260
-    pdf.stroke_horizontal_rule   
+    #pdf.move_down 260
+    #pdf.stroke_horizontal_rule   
     pdf_file_name = File.join(Rails.root, "public/pdfs", "#{@course.name}.pdf")
 
     pdf.render_file pdf_file_name
