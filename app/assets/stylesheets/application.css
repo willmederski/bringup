@@ -50,6 +50,7 @@ body {
 }
 
 #header {
+	min-width:900px;
 	background-color: #FF9200;
 	margin-top:50px;
 	height:50px;
@@ -221,8 +222,6 @@ textarea {
 	padding-left: 10px;
 }
 
-
-
 a {
 	text-decoration:none;
 	margin:0;
@@ -272,6 +271,7 @@ a {
 }
 
 #landing_header {
+	min-width:900px;
 	background-color: #e3e3e3;
 	margin-top:-15px;
 	height:50px;
@@ -292,7 +292,8 @@ a {
 }
 
 #landing_banner {
-	margin:10%;
+	margin:10% 0 10% 0;
+	min-width:900px;
 }
 
 #banner{
@@ -319,6 +320,7 @@ a {
 	background-color:#8BC9CA;
 	width:100%;
 	text-align:center;
+	min-width:900px;
 }
 
 .landing_panel_wrapper{
