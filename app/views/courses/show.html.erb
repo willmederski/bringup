@@ -1,4 +1,5 @@
 <div id='messages-url' data-url='<%= course_messages_path(@course, format: 'json') %>'></div>
+<div id='this-weeks-monday' data-date='<%= Time.now.beginning_of_week %>'></div>
 
 <div class="coursewrapper">
 	<div class="leftcard">

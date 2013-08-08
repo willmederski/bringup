@@ -3,12 +3,15 @@
   counter_id  = "counter#{index + 1}"
   day_of_week = weekday_for_week(start, weekday) -->
 
-<% for message in @messages.models: %>
+<% index = 1 %>
+<% for weekday in @weekdays: %>
+  <% message = @messages.where({send_date: weekday.toLocaleDateString('en-US'); }) %>
   <div class="message_form">
-    <span class="body1"></span>
-    <textarea id='body1' name='body1'><%= message.get('body') %></textarea>
+    <span class="counter<%= index %>"></span>
+    <textarea id='body<%= index %>' name='body<%= index %>'><% if message.length > 0: %><%= message[0].get('body') %><% end %></textarea>
     </br>
-    <input name='date1' type="hidden" value='mon'>
-    <label for='body'>Monday</label>
+    <input name='date<%= index %>' type="hidden" value='<%= weekday.toISOString() %>'>
+    <label for='body'><%= weekday.toDateString() %></label>
   </div>
+  <% index += 1 %>
 <% end %>
