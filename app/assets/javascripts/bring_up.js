@@ -9,6 +9,12 @@ window.BringUp = {
     this.messages.fetch({
       success: function(){
         $('#messages-list').html(view.render().el);
+
+        $('#body1').counterField();
+        $('#body2').counterField();
+        $('#body3').counterField();
+        $('#body4').counterField();
+        $('#body5').counterField();
       }
     });
   }

@@ -1,7 +1,4 @@
-  <!-- date_id     = "date#{index + 1}"
-  body_id     = "body#{index + 1}"
-  counter_id  = "counter#{index + 1}"
-  day_of_week = weekday_for_week(start, weekday) -->
+
 
 <% index = 1 %>
 <% for weekday in @weekdays: %>
