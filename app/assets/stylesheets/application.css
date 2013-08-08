@@ -134,13 +134,12 @@ textarea {
 
 .parent_list h3{
 	font-size: 1em;
-	margin-top: 20px;
 	background-color:#8BC9CA;
 	width:90%;
 	padding:0;
-	padding-top:7px;
-	padding-bottom:7px;
+	padding-top:10px;
 	margin:auto;
+	margin-bottom:10px;
 }
 
 .parent_item{

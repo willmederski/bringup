@@ -41,8 +41,10 @@
 	<div class = "rightcard">
 		<div class = "datepicker">
 		</div>
+
 		<div class="parent_list">
-			<h3><%= link_to '+ Add Recipients', new_parent_path %></h3>
+			<h3 class="submit"><%= link_to 'Generate Parent PDF', generate_pdf_course_path(@course)%></h3>
+			<h3 class="submit"><%= link_to '+ Add Recipients', new_parent_path %></h3>
 			<% @parents.each do |parent| %>
 				<div class="parent_item">
 					<ul>
@@ -59,7 +61,7 @@
 	</div>
 	</div>
 
-	<%= link_to 'PDF', generate_pdf_course_path(@course) %>
+	
 
 
 	<div style="display: block; clear: both;"></div>
