@@ -251,6 +251,10 @@ a {
 
 }
 
+#lastweek:hover, #nextweek:hover {
+  cursor: pointer;
+}
+
 .ui-widget-header {
 	border:none;
 	background:none;

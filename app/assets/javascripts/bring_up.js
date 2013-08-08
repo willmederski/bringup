@@ -5,16 +5,12 @@ window.BringUp = {
   Routers: {},
   initialize: function() {
     this.messages = new BringUp.Collections.Messages;
-    var view = new BringUp.Views.MessagesIndex({ collection: this.messages });
+    this.messagesView = new BringUp.Views.MessagesIndex({ collection: this.messages });
+
     this.messages.fetch({
       success: function(){
-        $('#messages-list').html(view.render().el);
-
-        $('#body1').counterField();
-        $('#body2').counterField();
-        $('#body3').counterField();
-        $('#body4').counterField();
-        $('#body5').counterField();
+        // Render the center messages column.
+        BringUp.messagesView.render();
       }
     });
   }
