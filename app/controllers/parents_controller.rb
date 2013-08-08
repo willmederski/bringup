@@ -2,6 +2,7 @@ class ParentsController < ApplicationController
   # GET /parents
   # GET /parents.json
   def index
+    @parents = Parent.find_all_by_class_code(params[:course_id])
     @parents = Parent.all
 
     respond_to do |format|
