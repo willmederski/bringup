@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
+  include CoursesHelper
   def index
     @courses = Course.all
 
@@ -87,31 +88,22 @@ class CoursesController < ApplicationController
   end
 
   def generate_pdf
+    @course =Course.find(params[:id])
     pdf = Prawn::Document.new
-    # pdf.text "Receive Free Daily Classroom Update", :align => :center, :size => 18
-    # pdf.move_down 5
-    # pdf.text "Bring Up", :align => :center, :size => 14
-    # pdf.move_down 12
-    # pdf.column_box([0, cursor], :columns => 2, :width => pdf.bounds.width) do
-    #   text(<<-END
-    #     Studies show that just asking your child how their school day was 
-    #     and showing genuine interest in the learning that they are doing
-    #     can have the same impact as hours of private tutoring!
-
-    #     Sign up to receive classroom recaps from your student's teacher
-    #     every evening via SMS text message.
-
-    #     We will text you the necessary information to help you talk with
-    #     your child about what they did in school every night.
-
-    #     See www.bringuptogether.com for more information.
-
-    #   END
-    #   )
-    # end
-    pdf.text "Hello World"
-
-    pdf_file_name = File.join(Rails.root, "public/pdfs", "course.pdf")
+    pdf.stroke_horizontal_rule
+    pdf.text "Receive Free Daily Classroom Updates!", :align => :center, :size => 22
+    pdf.bounding_box([0, 675], :width => 200, :height => 100) do
+      pdf.text "bringup", :align => :center, :size => 18, :font_color => "FF9200"
+        end
+    pdf.bounding_box([250, 675], :width => 200, :height => 100) do
+      pdf.text "Sign Up for FREE!", :align => :center, :size => 18, :font_color => "FF9200"
+        end 
+    pdf.bounding_box([20, 660], :width => 200, :height => 400) do
+      pdf.text "Studies show that just asking your child how their school day was and showing genuine interest in the learning they are doing can have the same impact as hours of private tutoring.", :align => :left, :size => 11, :font_color => "FF9200"
+        end
+    pdf.move_down 260
+    pdf.stroke_horizontal_rule   
+    pdf_file_name = File.join(Rails.root, "public/pdfs", "#{@course.name}.pdf")
 
     pdf.render_file pdf_file_name
 
