@@ -17,25 +17,109 @@
 	</div>
 
 	<div class="centercard">
-		<p id="notice"><%= notice %></p>
-		
+		<div id="todays_message">
+			<h3>Today's Message: </h3>
+			<% if @course.messages.find_by_send_date(Time.now.to_date) %>
+				<p><%= @course.messages.find_by_send_date(Time.now.to_date).body %></p>
+			<form class="Messages" action="<%=url_for(send_message_path(@course.id))%>" method="post">
+				<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+				<input name="body" type="hidden" value="<%= @course.messages.find_by_send_date(Time.now.to_date).body %>">
+				<div class="actions">
+		    		<input type="submit" value="Send Today's Message" class="submit" style="width:200px">
+		  		</div>
+			</form>
+			<% else %>
+				<p>You haven't saved a message for today yet. Please use the form below to submit one.</p>
+			</br>
+			<% end %>
+		</div>
 
 		<%= render 'messages' %>
-
-		<%= link_to 'Messages', course_messages_path(@course) %>
-		<%= link_to 'Edit', edit_course_path(@course) %> |
-		<%= link_to 'Back', courses_path %>
 
 	</div>
 
 	<div class = "rightcard">
 		<div class = "datepicker">
 		</div>
+
+		<div class="parent_list">
+			<h3 class="submit"><%= link_to 'Generate Parent PDF', generate_pdf_course_path(@course)%></h3>
+			<h3 class="submit"><%= link_to '+ Add Recipients', new_parent_path %></h3>
+			<% @parents.each do |parent| %>
+				<div class="parent_item">
+					<ul>
+					<li><h3><%=parent.first_nm%> <%=parent.last_nm%></h3></li>
+					<li>Student: <em><%=parent.child_nm%></em></li>
+						<li><%=parent.phone_number%></li>
+						<li><%= link_to 'Show', parent %> | <%= link_to 'Edit', edit_parent_path(parent) %> | <%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?'} %>
+						</li>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+			
+	</div>
 	</div>
 
-	<%= link_to 'PDF', generate_pdf_course_path(@course) %>
+	
 
 
 	<div style="display: block; clear: both;"></div>
 
 </div>
+
+<script type='text/javascript'>
+	$(document).ready(function()  {
+
+	    $.getJSON('/courses/<%= @course.id %>/messages.json', function(data) {
+	        var x = [];
+	        console.log(data);
+	        console.log('/courses/<%= @course.id %>/messages.json');
+	 
+	        for(i=0;i<data.length;i++){
+	            x.push(data[i].send_date);
+	        };
+
+	        console.log(x);
+
+	        $('body').append(x);
+
+	        for(i=0;i<data.length;i++){
+	            var mdate = x[i];
+	            console.log(mdate);
+	            var dates = $('.ui-state-default');
+	            for( j=0;j<dates.length;j++) {
+	            	console.log((dates[j].parentElement.dataset.year) + "-0" + (dates[j].parentElement.dataset.month) + "-0" + (dates[j].text));
+	                if (((dates[j].parentElement.dataset.year) + "-0" + (dates[j].parentElement.dataset.month) + "-0" + (dates[j].text)) === mdate){
+	                    dates[j].css("color","red");
+	                };
+	            };
+	        };
+	    }); 
+
+	$( "#nextweek" ).click(function(){
+		$(".week_messages").effect( "slide", {direction:'right'}, 500, callback );
+ 
+	    // callback function to bring a hidden box back
+	    function callback() {
+	      setTimeout(function() {
+	        $( ".week_messages" ).removeAttr( "style" )
+	      }, 1000 );
+	    };
+
+	});
+
+	$( "#lastweek" ).click(function(){
+		$(".week_messages").effect( "slide", {direction:'left'}, 500, callback );
+ 
+	    // callback function to bring a hidden box back
+	    function callback() {
+	      setTimeout(function() {
+	        $( ".week_messages" ).removeAttr( "style" )
+	      }, 1000 );
+	    };
+
+	});
+
+	}); 
+</script>

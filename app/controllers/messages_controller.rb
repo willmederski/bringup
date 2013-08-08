@@ -92,8 +92,10 @@ class MessagesController < ApplicationController
   end
 
   def send_message
-    @message = params[:body]
-
+    # @message = params
+    # puts @message
+    @parents = Parent.find_all_by_class_code(params[:course_id])
+    puts @parents
     # put your own credentials here
     account_sid=ENV["TWILIO_ACCOUNT_SID"]
     auth_token=ENV["TWILIO_TOKEN"]
@@ -101,14 +103,28 @@ class MessagesController < ApplicationController
     # set up a client to talk to the Twilio REST API
     @client = Twilio::REST::Client.new account_sid, auth_token
 
-    @client.account.sms.messages.create(
-    :from => '+15128618455',
-    :to => '+15128261724',
-    :body => @message
-    )
+    # friends = {
+    # "+14153334444" => "Curious George",
+    # "+14155557775" => "Boots",
+    # "+14155551234" => "Virgil"
+    # }
+
+    @parents.each do |parent|
+      @client.account.sms.messages.create(
+        :from => '+15128618455',
+        :to => parent.phone_number,
+        :body => "#{parent.first_nm}: #{params[:body]}"
+      ) 
+    end
+
+    # @client.account.sms.messages.create(
+    # :from => '+15128618455',
+    # :to => '+15128261724',
+    # :body => @message.body
+    # )
 
     respond_to do |format|
-        format.html { redirect_to course_messages_path, notice: 'Message was successfully sent.' }
+        format.html { redirect_to course_path(current_teacher.courses.first.id), notice: 'Message was successfully sent.' }
     end
 
   end

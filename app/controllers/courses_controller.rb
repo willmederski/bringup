@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
     require 'dates'
     @course = Course.find(params[:id])
     @message = Message.new
+    @parents = Parent.find_all_by_class_code(params[:id])
     @weekstart = MessageDates::execute
 
     respond_to do |format|

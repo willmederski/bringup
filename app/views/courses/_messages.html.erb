@@ -1,3 +1,5 @@
+
+
 <form class="Messages" action="<%=url_for([@course,@message])%>" method="post">
   <div class="form_div">
     
@@ -7,6 +9,8 @@
       <li><h3><%= weekday_for_week(start, :mon).strftime("%m/%d")+" - "+(weekday_for_week(start, :mon)+6.days).strftime("%m/%d") %></h3></li>
       <li class="weeknav" id="nextweek"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></li>
     </ul>
+
+    <div class ="week_messages">
 
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -33,5 +37,7 @@
   <div class="actions">
     <input type="submit" value="Submit", class="submit" %>
   </div>
+
+</div>
 
 </form>
