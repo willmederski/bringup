@@ -1,4 +1,10 @@
-
+<ul class="bar">
+  <li class= "weeknav" id="lastweek"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></li>
+  <li>
+    <h3><%= @weekdays[0].toLocaleDateString() %> - <%= @weekdays[4].toLocaleDateString() %></h3>
+  </li>
+  <li class="weeknav" id="nextweek"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></li>
+</ul>
 
 <% index = 1 %>
 <% for weekday in @weekdays: %>
