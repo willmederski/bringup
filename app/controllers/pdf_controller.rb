@@ -1,5 +1,6 @@
-class PdfController < ApplicationController
+class CoursePdf < Prawn::Document
 	require 'prawn'
+
   # 
   # 
 #def index
@@ -11,3 +12,4 @@ class PdfController < ApplicationController
 
 
 end
+

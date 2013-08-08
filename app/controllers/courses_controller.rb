@@ -23,7 +23,9 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }
-    end
+      format.pdf do
+        generate_pdf
+      end
   end
 
   # GET /courses/new
@@ -90,22 +92,25 @@ class CoursesController < ApplicationController
   def generate_pdf
     @course =Course.find(params[:id])
     pdf = Prawn::Document.new
+
     pdf.stroke_horizontal_rule
     pdf.text "Receive Free Daily Classroom Updates!", :align => :center, :size => 22
+    
     pdf.bounding_box([0, 675], :width => 200, :height => 100) do
       pdf.text "bringup", :align => :center, :size => 18, :font_color => "FF9200"
         end
     pdf.bounding_box([250, 675], :width => 200, :height => 100) do
       pdf.text "Sign Up for FREE!", :align => :center, :size => 18, :font_color => "FF9200"
         end 
-    pdf.bounding_box([20, 660], :width => 200, :height => 400) do
+    pdf.bounding_box([20, 600], :width => 200, :height => 400) do
       pdf.text "Studies show that just asking your child how their school day was and showing genuine interest in the learning they are doing can have the same impact as hours of private tutoring.", :align => :left, :size => 11, :font_color => "FF9200"
         end
-    pdf.move_down 260
-    pdf.stroke_horizontal_rule   
+    #pdf.move_down 260
+    #pdf.stroke_horizontal_rule   
     pdf_file_name = File.join(Rails.root, "public/pdfs", "#{@course.name}.pdf")
 
-    pdf.render_file pdf_file_name
+    pdf.render_file pdf_file_name, type: "application/pdf",
+                                  disposition: "inline"
 
     send_file pdf_file_name
   end
