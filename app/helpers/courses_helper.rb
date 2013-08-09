@@ -1,8 +1,8 @@
 module CoursesHelper
 
  def stroke_axis(options={})
-       options = { :height => bounds.height.to_i,
-                   :width => bounds.width.to_i
+       options = { :height => 500,
+                   :width => 500
                  }.merge(options)
       
        dash(1, :space => 4)
