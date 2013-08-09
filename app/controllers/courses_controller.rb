@@ -134,7 +134,7 @@ class CoursesController < ApplicationController
 
     pdf.bounding_box([360, 405], :width =>200, :height =>30) do
       pdf.fill_color "FF9200"
-      pdf.text "+15124444444", :align =>:left, :size => 18
+      pdf.text "+15128618455", :align =>:left, :size => 18
     end
 
 
