@@ -101,42 +101,44 @@ class CoursesController < ApplicationController
     teal   = "009092"
     black  = "000000"
 
+    pdf.move_down 30
+
     pdf.text "Receive Free Daily Classroom Updates!", :align => :left, :size => 28
     
-    pdf.bounding_box([0, 675], :width => 225, :height => 100) do
+    pdf.bounding_box([0, 625], :width => 225, :height => 100) do
       #pdf.stroke_bounds
       pdf.fill_color "FF9200"
       pdf.text "bringup", :align => :center, :size => 20
         end
 
-    pdf.bounding_box([325, 675], :width => 200, :height => 30) do
+    pdf.bounding_box([325, 625], :width => 200, :height => 30) do
       pdf.fill_color black
       pdf.text "Sign Up for FREE!", :align => :center, :size => 20
     end
 
     pdf.image "#{Rails.root}/app/assets/images/Cell-Sketch-Green.png", :position => :right
       
-    pdf.bounding_box([360, 550], :width =>200, :height =>30) do
+    pdf.bounding_box([360, 475], :width =>200, :height =>30) do
       pdf.text "Text:", :align =>:left, :size => 18
     end
 
-     pdf.bounding_box([360, 530], :width =>200, :height =>30) do
+     pdf.bounding_box([360, 455], :width =>200, :height =>30) do
       pdf.fill_color "FF9200"
       pdf.text course_id, :align =>:left, :size => 18
     end
 
-    pdf.bounding_box([360, 500], :width =>200, :height =>30) do
+    pdf.bounding_box([360, 425], :width =>200, :height =>30) do
       pdf.fill_color black
       pdf.text "To:", :align =>:left, :size => 18
     end
 
-    pdf.bounding_box([360, 480], :width =>200, :height =>30) do
+    pdf.bounding_box([360, 405], :width =>200, :height =>30) do
       pdf.fill_color "FF9200"
       pdf.text "+15124444444", :align =>:left, :size => 18
     end
 
 
-    pdf.bounding_box([0, 645], :width => 225, :height => 400) do
+    pdf.bounding_box([0, 580], :width => 225, :height => 400) do
       #pdf.stroke_bounds
       pdf.fill_color teal
       pdf.text "Studies show that just asking your child how their school day was and showing genuine interest in the learning they are doing can have the same impact as hours of private tutoring!
@@ -147,10 +149,24 @@ class CoursesController < ApplicationController
        :align => :justify, :size => 11, :font_color => teal
         end
 
-    pdf.bounding_box([0, 445], :width => 225, :height => 200) do
+    pdf.bounding_box([0, 355], :width => 225, :height => 200) do
       pdf.fill_color orange
       pdf.text "See www.bringuptogether.com for more information", :align => :left
-      end    
+      end 
+
+    
+    pdf.bounding_box([0, 75], :width => 600, :height => 200) do
+      pdf.fill_color teal
+      pdf.text "Student Name: _________________________ Parent Signature: ___________________________",
+       :align => :left
+      end
+
+    pdf.bounding_box([5, 50], :width => 600, :height => 200) do
+      pdf.fill_color teal
+      pdf.text 'Standard text messaging rates apply.  Text "STOP" at any time to unsubscribe.',
+       :align => :left, :size => 9
+      end      
+         
  
     pdf_file_name = File.join(Rails.root, "public/pdfs", "#{@course.name}.pdf")
 
