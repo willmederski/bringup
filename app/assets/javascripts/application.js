@@ -10,11 +10,12 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+
 //= require jquery
-//= require jquery_ujs
-//= require jquery.ui.all
 //= require underscore
 //= require backbone
+//= require jquery_ujs
+//= require jquery.ui.all
 //= require bring_up
 //= require_tree ../templates
 //= require_tree ./models
@@ -22,32 +23,40 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+//= require_self
 
 $(document).ready(function()  {
 
-    $.fn.counterField = function() {
-      var characters = 120;
-      var $counter = $(this).siblings('span');
+  $.fn.counterField = function() {
+    var characters = 120;
+    var $counter = $(this).siblings('span');
+    var remaining = characters -  $(this).val().length;
+    $counter.append(remaining+" left");
+    $(this).keyup(function(){
+      if($(this).val().length > characters){
+        $(this).val($(this).val().substr(0,characters));
+      }
       var remaining = characters -  $(this).val().length;
-      $counter.append(remaining+" left");
-      $(this).keyup(function(){
-        if($(this).val().length > characters){
-          $(this).val($(this).val().substr(0,characters));
-        }
-        var remaining = characters -  $(this).val().length;
-        $counter.html(remaining+" left");
-        if(remaining <= 20)
-        {
-          $counter.css("color","red");
-        }
-        else
-        {
-          $counter.css("color","black");
-        }
-      });
-    };
-
-    $(function() {
-      $('.datepicker').datepicker();
+      $counter.html(remaining+" left");
+      if(remaining <= 20)
+      {
+        $counter.css("color","red");
+      }
+      else
+      {
+        $counter.css("color","black");
+      }
     });
+  };
+
+  // $('.datepicker').datepicker({
+  //   onSelect: function(dateText, inst){
+  //     console.log('foo');
+  //     //$(this).trigger()
+  //     //awesome ajax stuff based on dateText
+  //   },
+  //   beforeShowDay: function(date){
+  //       return [true, 'date-' + date.getDate() ];
+  //   }
+  // });
 });

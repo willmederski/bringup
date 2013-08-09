@@ -82,7 +82,7 @@ class CoursesController < ApplicationController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to courses_url }
+      format.html { redirect_to course_path(current_teacher.courses.first.id) }
       format.json { head :no_content }
     end
   end

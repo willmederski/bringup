@@ -59,4 +59,4 @@ gem "prawn", "~> 0.12.0"
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

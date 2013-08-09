@@ -3,12 +3,14 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
 
   events: {
     "click #lastweek": "moveToPreviousWeek",
-    "click #nextweek": "moveToNextWeek"
+    "click #nextweek": "moveToNextWeek",
+    // "click .ui-state-default": "changeWeek"
   },
 
   initialize: function(){
     this.collection.on('reset', this.render, this);
     this.collection.on('changeDate', this.render, this);
+    BringUp.Events.on('changeDateInCalendar', this.handleCalendarChange, this);
 
     this.setStartDate(new Date($('#this-weeks-monday').data('date')));
   },
@@ -27,21 +29,33 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
     this.weekdays = [ mon, tue, wed, thu, fri ];
   },
 
+  handleCalendarChange: function(selectDate) {
+    var selected = selectDate;
+    var date = new Date();
+    var t = selected.getDay();
+    if (t === 0){
+      date.setDate(selected.getDate() + 1)
+    }
+    else {
+      date.setDate(selected.getDate() + 1 - t)
+    };
+    this.setStartDate(date);
+    this.collection.trigger('changeDate');
+  },
+
   moveToPreviousWeek: function() {
-    console.log('previous');
+    
     date = this.weekdays[0];
     date.setDate(date.getDate() - 7);
     this.setStartDate(date);
-    this.render();
-    //this.trigger('changeDate');
+    this.collection.trigger('changeDate');
   },
 
   moveToNextWeek: function() {
     date = this.weekdays[0];
     date.setDate(date.getDate() + 7);
     this.setStartDate(date);
-    this.render();
-    //this.trigger('changeDate');
+    this.collection.trigger('changeDate');
   },
 
   render: function(){

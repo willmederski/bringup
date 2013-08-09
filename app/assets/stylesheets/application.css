@@ -84,6 +84,12 @@ h3{
 	padding:5px;
 }
 
+h5{
+	padding:0;
+	font-size:.5em;
+	margin:0;
+}
+
 .hidden{
 	display:none;
 }
@@ -270,8 +276,8 @@ a {
 	margin:auto;
 }
 
-.selectedDate {
-	background-color:#8BC9CA;
+.painted a {
+	background: #8BC9CA !important;
 }
 
 #landing_header {

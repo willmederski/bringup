@@ -42,23 +42,28 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    #create overwrites existing data for the same date and only creates new messages if the body of the submission contains viable content
     require 'dates'
-    @message1 = Message.new(:body => params["body1"],:course_id => params["course_id"],:send_date => params["date1"])
-    @message2 = Message.new(:body => params["body2"],:course_id => params["course_id"],:send_date => params["date2"])
-    @message3 = Message.new(:body => params["body3"],:course_id => params["course_id"],:send_date => params["date3"])
-    @message4 = Message.new(:body => params["body4"],:course_id => params["course_id"],:send_date => params["date4"])
-    @message5 = Message.new(:body => params["body5"],:course_id => params["course_id"],:send_date => params["date5"])
-    @message1.save
-    @message2.save
-    @message3.save
-    @message4.save
-    @message5.save
     @message = @message1
+    @course = Course.find(params["course_id"])
     @weekstart = MessageDates::execute
+
+    week = [@message1,@message2,@message3,@message4,@message5]
+    week.each_with_index do |day,i|
+      puts @course.messages.find_by_send_date(params["date#{i+1}"].to_date)
+      if  @course.messages.find_by_send_date(params["date#{i+1}"].to_date)
+          @course.messages.find_by_send_date(params["date#{i+1}"].to_date).destroy
+      end
+      if params["body#{i+1}"].length > 1
+        day = Message.new(:body => params["body#{i+1}"],:course_id => params["course_id"],:send_date => params["date#{i+1}"])
+        day.save
+      end
+    end
+    
     puts "params: #{params}"
 
     respond_to do |format|
-        format.html { redirect_to course_messages_path, notice: 'Messages were successfully created.' }
+        format.html { redirect_to @course, notice: 'Messages were successfully created.' }
     end
   end
 
