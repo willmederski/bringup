@@ -197,6 +197,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise
+  eco-source (~> 1.1.0.rc.1)
   figaro
   formtastic
   jquery-rails
