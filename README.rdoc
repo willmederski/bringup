@@ -1,7 +1,9 @@
 == BringUp
 
-BringUp is our first major client-driven project, produced as our final project for MakerSquare.
+BringUp is our first major client-driven project, produced as our final project for MakerSquare. This was a 12-day project but we plan to continue development beyond the end of class.
+
 Partner: Patricia Silva
+
 Clients: Will Mederski and Kevin McCann ("The BringUp Guys")
 
 == What's BringUp?
