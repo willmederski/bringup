@@ -6,14 +6,14 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-	gem "pg"
+  gem "pg"
 end
 
 group :development, :test do
-	gem 'sqlite3'
-	gem 'sextant'
-	gem 'better_errors'
-	gem 'binding_of_caller'
+  gem 'sqlite3'
+  gem 'sextant'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
@@ -46,7 +46,7 @@ gem "localtunnel", "~> 0.3"
 gem 'state_machine'
 gem "prawn", "~> 0.12.0"
 
-gem "eco-source", "~> 1.1.0.rc.1"
+# gem "eco-source", "~> 1.1.0.rc.1"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
