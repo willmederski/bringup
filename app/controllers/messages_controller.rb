@@ -115,12 +115,12 @@ class MessagesController < ApplicationController
     # "+14155557775" => "Boots",
     # "+14155551234" => "Virgil"
     # }
-
+    @teacher = Course.find_by_id(params[:course_id]).teacher
     @parents.each do |parent|
       @client.account.sms.messages.create(
         :from => '+15128618455',
         :to => parent.phone_number,
-        :body => "#{parent.first_nm}: #{params[:body]}"
+        :body => "#{@teacher.preferred_name}: #{params[:body]}"
       ) 
     end
 
