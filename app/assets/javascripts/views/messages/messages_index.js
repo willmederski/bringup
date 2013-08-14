@@ -16,8 +16,9 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   },
 
   setStartDate: function(startDate) {
-    var mon = new Date(startDate);
-    mon.setDate(mon.getDate() + 1);
+    var sunday = startDate;
+    var mon = new Date(sunday);
+    mon.setDate(sunday.getDate() + 1);
     var tue = new Date(mon);
     tue.setDate(tue.getDate() + 1);
     var wed = new Date(tue);
@@ -56,14 +57,14 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   moveToPreviousWeek: function() {
     
     date = this.weekdays[0];
-    date.setDate(date.getDate() - 7);
+    date.setDate(date.getDate() - 8);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
   },
 
   moveToNextWeek: function() {
     date = this.weekdays[0];
-    date.setDate(date.getDate() + 7);
+    date.setDate(date.getDate() + 6);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
   },
