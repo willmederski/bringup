@@ -16,7 +16,8 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   },
 
   setStartDate: function(startDate) {
-    var mon = startDate;
+    var mon = new Date(startDate);
+    mon.setDate(mon.getDate() + 1);
     var tue = new Date(mon);
     tue.setDate(tue.getDate() + 1);
     var wed = new Date(tue);
