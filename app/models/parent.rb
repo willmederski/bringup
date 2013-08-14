@@ -25,7 +25,7 @@ class Parent < ActiveRecord::Base
 	 	end
 
 	 	event :added_delivery_time do
-	 		transition :delivery_time => :sign_off
+	 		transition :delivery_time => :course_num_and_phone
 	 	end
 
 	 	# TODO: commented out because have not created method validate_course_number

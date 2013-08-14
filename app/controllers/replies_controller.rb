@@ -42,28 +42,35 @@ class RepliesController < ApplicationController
       @parent.added_course_number_and_phone_number 
       @parent.save!
       get_first_nm(@reply.from)
-    elsif Parent.find_by_phone_number(@reply.from).state == "first_nm"
-      @parent=Parent.find_by_phone_number(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == 'course_num_and_phone' && Course.find_by_id(@reply.body.to_i).present?
+      @parent=Parent.new
+      @parent.phone_number=@reply.from
+      @parent.class_code=@reply.body
+      @parent.added_course_number_and_phone_number 
+      @parent.save!
+      get_first_nm(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == "first_nm"
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.first_nm = @reply.body
       @parent.added_first_name
       get_last_nm(@reply.from)
-    elsif Parent.find_by_phone_number(@reply.from).state == "last_nm"
-      @parent=Parent.find_by_phone_number(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == "last_nm"
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.last_nm = @reply.body   
       @parent.added_last_name
       get_child_nm(@reply.from)
-    elsif Parent.find_by_phone_number(@reply.from).state == "child_nm"
-      @parent=Parent.find_by_phone_number(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == "child_nm"
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.child_nm = @reply.body   
       @parent.added_child_name
       get_relationship(@reply.from)
-    elsif Parent.find_by_phone_number(@reply.from).state == "relationship"
-      @parent=Parent.find_by_phone_number(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == "relationship"
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.relationship = @reply.body   
       @parent.added_relationship
       get_delivery_time(@reply.from)
-    elsif Parent.find_by_phone_number(@reply.from).state == "delivery_time"
-      @parent=Parent.find_by_phone_number(@reply.from)
+    elsif Parent.find_all_by_phone_number(@reply.from).last.state == "delivery_time"
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.delivery_time = @reply.body   
       @parent.added_delivery_time
       send_sign_off(@reply.from)
