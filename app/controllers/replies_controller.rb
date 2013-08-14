@@ -35,7 +35,7 @@ class RepliesController < ApplicationController
     @reply.body=params["Body"]
     #@reply.status=params["SmsStatus"]
     @reply.api_version=params["ApiVersion"]
-    if Pared.find_by_phone_number(@reply.from).state == 'course_num_and_phone'  || (Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).present?)
+    if (Pared.find_by_phone_number(@reply.from).state == 'course_num_and_phone' && Course.find_by_id(@reply.body.to_i).present?) || (Parent.find_by_phone_number(@reply.from).nil? && Course.find_by_id(@reply.body.to_i).present?)
       @parent=Parent.new
       @parent.phone_number=@reply.from
       @parent.class_code=@reply.body
