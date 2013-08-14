@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :school %><br />
-    <%= f.text_field :school %>
+    <%= f.text_field :school, data:{autocomplete_source: School.order(:school_name.map(&:school_name)} %>
   </div>
   <div class="field">
     <%= f.label :principal_name %><br />

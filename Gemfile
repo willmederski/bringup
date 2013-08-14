@@ -45,6 +45,7 @@ gem 'rabl'
 gem "localtunnel", "~> 0.3"
 gem 'state_machine'
 gem "prawn", "~> 0.12.0"
+gem "mailchimp-api", "~> 2.0.1"
 
 # gem "eco-source", "~> 1.1.0.rc.1"
 

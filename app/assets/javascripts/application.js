@@ -49,6 +49,8 @@ $(document).ready(function()  {
     });
   };
 
+  $('#teacher_school').autocomplete
+      source: $('#teacher_school').data('autocomplete-source')
   // $('.datepicker').datepicker({
   //   onSelect: function(dateText, inst){
   //     console.log('foo');
@@ -60,3 +62,4 @@ $(document).ready(function()  {
   //   }
   // });
 });
+
