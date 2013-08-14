@@ -60,7 +60,7 @@ class RepliesController < ApplicationController
       @parent.added_last_name
       get_child_nm(@reply.from)
     elsif Parent.find_all_by_phone_number(@reply.from).last.state == "child_nm"
-      @parent=Parent.find__all_by_phone_number(@reply.from).last
+      @parent=Parent.find_all_by_phone_number(@reply.from).last
       @parent.child_nm = @reply.body   
       @parent.added_child_name
       get_relationship(@reply.from)
