@@ -49,14 +49,14 @@
 
 		<div class="parent_list">
 			<h3 class="submit"><%= link_to 'Generate Parent PDF', generate_pdf_course_path(@course)%></h3>
-			<h3 class="submit"><%= link_to '+ Add Recipients', new_parent_path %></h3>
+			<h3 class="submit"><%= link_to '+ Add Recipients', new_parent_path(:add_param => @course.id) %></h3>
 			<% @parents.each do |parent| %>
 				<div class="parent_item">
 					<ul>
 					<li><h3><%=parent.first_nm%> <%=parent.last_nm%></h3></li>
 					<li>Student: <em><%=parent.child_nm%></em></li>
 						<li><%=parent.phone_number%></li>
-						<li><%= link_to 'Show', parent %> | <%= link_to 'Edit', edit_parent_path(parent) %> | <%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?'} %>
+						<li><%= link_to 'Show', parent %> | <%= link_to 'Edit', edit_parent_path( parent,add_param: @course.id ) %> | <%= link_to 'Destroy', parent_path(parent, add_param: @course.id), method: :delete, data: { confirm: 'Are you sure?'} %>
 						</li>
 					</ul>
 				</div>
@@ -72,58 +72,3 @@
 	<div style="display: block; clear: both;"></div>
 
 </div>
-
-// <script type='text/javascript'>
-// 	$(document).ready(function()  {
-
-// 	    $.getJSON('/courses/<%= @course.id %>/messages.json', function(data) {
-// 	        var x = [];
-	 
-// 	        for(i=0;i<data.length;i++){
-// 	            x.push(data[i].send_date);
-// 	        };
-
-// 	        for(i=0;i<data.length;i++){
-// 	            var mdate = x[i];
-// 	            console.log('JSON ' + mdate);
-// 	            var dates = $('.ui-state-default');
-
-// 	            for( j=0;j<dates.length;j++) {
-// 	            	var day = dates[j];
-// 	            	console.log('Cal ' + ((parseInt(day.parentElement.dataset.month)+1) + "/" + (day.text) + "/" + (day.parentElement.dataset.year)));
-// 	                if (((parseInt(day.parentElement.dataset.month)+1) + "/" + (day.text) + "/" + (day.parentElement.dataset.year)) === mdate){
-// 	                	 console.log("yippee");
-// 	                     dates.eq(j).css("background","#8BC9CA");
-// 	                 };
-// 	            };
-// 	        };
-// 	    });
-
-
-
-	// $( "#nextweek" ).click(function(){
-	// 	$(".week_messages").effect( "slide", {direction:'right'}, 500, callback );
- 
-	//     // callback function to bring a hidden box back
-	//     function callback() {
-	//       setTimeout(function() {
-	//         $( ".week_messages" ).removeAttr( "style" )
-	//       }, 1000 );
-	//     };
-
-	// });
-
-	// $( "#lastweek" ).click(function(){
-	// 	$(".week_messages").effect( "slide", {direction:'left'}, 500, callback );
- 
-	//     // callback function to bring a hidden box back
-	//     function callback() {
-	//       setTimeout(function() {
-	//         $( ".week_messages" ).removeAttr( "style" )
-	//       }, 1000 );
-	//     };
-
-	// });
-
-	// }); 
-</script>

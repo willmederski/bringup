@@ -1,31 +1,15 @@
 <div class="formcard">
-  <h1>Listing courses</h1>
-
-  <table>
-    <tr>
-      <th>Twilio</th>
-      <th>Name</th>
-      <th>Teacher</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-<% current_teacher.courses.each do |course| %>
-    <tr>
-      <td><%= course.twilio_id %></td>
-      <td><%= course.name %></td>
-      <td><%= course.teacher_id %></td>
-      <td><%= link_to 'Show', course %></td>
-      <td><%= link_to 'Edit', edit_course_path(course) %></td>
-      <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-
-   </table>
-
-  <br />
-
-  <%= link_to 'New Course', new_course_path %>
-  <%= javascript_include_tag "application" %>
+  <h2>Add a new course or click the desired course heading</h2>
+  <div class="courseindex">
+    <% current_teacher.courses.each do |course| %>
+        <div class= "courseselect">
+          <%= link_to course.name, course %>
+          <h5><%= link_to 'Edit', edit_course_path(course.id) %> | <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </h5>
+        </div>
+    <% end %>
+    <div class= "courselist">
+      <%= link_to '+ Add Course', new_course_path %>
+    </div>
+  </div>
 </div>

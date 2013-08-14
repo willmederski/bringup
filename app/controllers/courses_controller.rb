@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_filter :validate_user
+  skip_before_filter :validate_user, :only => [:index, :new, :create, :generate_pdf] 
   # GET /courses
   # GET /courses.json
   require 'prawn'
@@ -81,7 +83,15 @@ class CoursesController < ApplicationController
   # DELETE /courses/1.json
   def destroy
     @course = Course.find(params[:id])
+    @messages = Message.find_all_by_course_id(params[:id])
+    @parents = Parent.find_all_by_class_code(params[:id])
     @course.destroy
+    @messages.each do |message|
+      message.destroy
+    end
+    @parents.each do |parent|
+      parent.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to course_path(current_teacher.courses.first.id) }
@@ -174,4 +184,13 @@ class CoursesController < ApplicationController
 
     send_file pdf_file_name
   end
+
+  private
+
+  
+  def validate_user
+    redirect_to teacher_root_path unless (current_teacher && (current_teacher.id == Course.find(params[:id]).teacher_id))
+    # and (current_teacher.id == @course.teacher_id)
+  end
+
 end

@@ -36,22 +36,25 @@ div {
 }
 
 #notice {
-  color: green;
+  color: #FF9200;
 }
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  margin:auto;
+  background-color: #FF9200;
   display: table;
+  opacity: .7;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 5px solid #e3e3e3;
   padding: 7px;
+  margin: auto;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: white;
   h2 {
     text-align: left;
     font-weight: bold;
@@ -59,8 +62,8 @@ div {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
+    background-color: #e3e3e3;
+    color: black;
   }
   ul li {
     font-size: 12px;

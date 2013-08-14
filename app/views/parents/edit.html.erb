@@ -1,6 +1,8 @@
-<h1>Editing parent</h1>
+<div class="formcard">
+	<h2>Editing parent</h2>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @parent %> |
-<%= link_to 'Back', parents_path %>
+	<%= link_to 'Show', @parent %> |
+	<%= link_to 'Back', course_path(@parent.class_code) %>
+</div>

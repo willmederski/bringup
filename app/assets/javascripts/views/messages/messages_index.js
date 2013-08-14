@@ -30,15 +30,24 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   },
 
   handleCalendarChange: function(selectDate) {
-    var selected = selectDate;
+    console.log('Rercived date', selectDate)
+    var selected = selectDate; // Fri Oct 4
     var date = new Date();
-    var t = selected.getDay();
+    var t = selected.getDay(); // 5
+    var calendarDate = selected;
+    date.setMonth(calendarDate.getMonth());
+    date.setYear(calendarDate.getFullYear()); // Fri Oct 4 (trying to get Mon Sept 30)
+    console.log('day', t);
+    console.log('calendarDate', calendarDate.getDate()); 
     if (t === 0){
-      date.setDate(selected.getDate() + 1)
+      date.setDate(calendarDate.getDate() + 1);
+      console.log("t=0",date);
     }
     else {
-      date.setDate(selected.getDate() + 1 - t)
+      date.setDate(calendarDate.getDate() + 1 - t); // (4) + 1 - 5 = 0
+      console.log("t!=0",date);
     };
+    console.log('Date', date);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
   },
