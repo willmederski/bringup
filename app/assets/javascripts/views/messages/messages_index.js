@@ -41,11 +41,11 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
     console.log('day', t);
     console.log('calendarDate', calendarDate.getDate()); 
     if (t === 0){
-      date.setDate(calendarDate.getDate() + 1);
+      date.setDate(calendarDate.getDate());
       console.log("t=0",date);
     }
     else {
-      date.setDate(calendarDate.getDate() + 1 - t); // (4) + 1 - 5 = 0
+      date.setDate(calendarDate.getDate()- t); // (4) + 1 - 5 = 0
       console.log("t!=0",date);
     };
     console.log('Date', date);
