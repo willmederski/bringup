@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805213438) do
+ActiveRecord::Schema.define(:version => 20130814164038) do
 
   create_table "courses", :force => true do |t|
     t.string   "twilio_id"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20130805213438) do
     t.string   "uri"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.string   "state"
   end
 
   create_table "schools", :force => true do |t|
@@ -91,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20130805213438) do
     t.string   "full_name"
     t.string   "preferred_name"
     t.string   "phone"
-    t.string   "school"
+    t.string   "school_name"
     t.string   "principal_name"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false

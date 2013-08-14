@@ -1,5 +1,9 @@
 BringUp::Application.routes.draw do
 
+  resources :schools do
+    get 'suggest', :on => :collection
+  end
+
   resources :replies
 
   post "replies/receive" => 'replies#receive', as: 'receive_text'

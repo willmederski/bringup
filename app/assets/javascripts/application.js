@@ -49,12 +49,15 @@ $(document).ready(function()  {
     });
   };
 
+
   $('.showparent').click(function(){
     $('.parent_item').toggle();
   });
 
-  $('#teacher_school').autocomplete
-      source: $('#teacher_school').data('autocomplete-source')
+  $('#teacher_school_name').autocomplete({
+    source: $('#teacher_school_name').data('autocomplete-source')
+  });
+
   // $('.datepicker').datepicker({
   //   onSelect: function(dateText, inst){
   //     console.log('foo');

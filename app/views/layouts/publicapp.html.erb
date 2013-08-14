@@ -12,7 +12,7 @@
 		<div class="navbar">
 			<% if current_teacher.present? %>
 				Welcome, <%=current_teacher.full_name%>  |  
-				<%= link_to 'My Account', course_path(current_teacher.courses.first.id) %>  |  
+				<%= link_to 'My Account', courses_path %>  |  
 				<%= link_to 'About', '#' %>  |  
 				<%= link_to 'Contact', '#' %>  |  
 		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>

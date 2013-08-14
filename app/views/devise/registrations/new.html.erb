@@ -27,7 +27,7 @@
 	  <%= f.text_field :phone, :placeholder => "phone number (5550001111)" %></div>
 
 		<div>
-	  <%= f.text_field :school, :placeholder => "school" %></div>
+	  <%= f.text_field :school_name, :data => {:autocomplete_source => suggest_schools_url}, :placeholder => "school" %></div>
 
 		<div>
 	  <%= f.text_field :principal_name, :placeholder => "principal name" %></div>
