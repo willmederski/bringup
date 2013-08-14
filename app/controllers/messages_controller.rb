@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_filter :validate_user
+  skip_before_filter :validate_user, :only => [:new, :send_message] 
   # GET /messages
   # GET /messages.json
   def index
@@ -134,6 +136,12 @@ class MessagesController < ApplicationController
 
   end
 
+ private
+
+  
+  def validate_user
+    redirect_to teacher_root_path unless current_teacher and (current_teacher.id == Course.find(params[:course_id]).teacher_id)
+  end
 
 
  

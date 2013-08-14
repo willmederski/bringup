@@ -28,6 +28,8 @@ BringUp::Application.routes.draw do
 
   match '/courses/:course_id/messages/send' => 'messages#send_message', as: 'send_message'
 
+  #this is used to define where devise redirects users (teachers) after sign in
+  match 'teacher_root' => 'courses#index', as: :teacher_root
 
   root :to => "pages#index"
 

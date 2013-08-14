@@ -43,11 +43,10 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(params[:teacher])
-
     respond_to do |format|
-      if @teacher.save
-        format.html { redirect_to @courses, notice: 'Teacher was successfully created.' }
-        format.json { render json: @courses, status: :created, location: @teacher }
+      if @teacher.save 
+        format.html { redirect_to courses_path(@teacher), notice: 'Teacher was successfully created.' }
+        format.json { render json: courses_path(@teacher), status: :created, location: @teacher }
       else
         format.html { render action: "new" }
         format.json { render json: @teacher.errors, status: :unprocessable_entity }

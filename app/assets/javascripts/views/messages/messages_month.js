@@ -29,7 +29,7 @@ BringUp.Views.MessagesMonth = Backbone.View.extend({
   },
 
   changeDate: function() {
-    console.log(this.$calendar().datepicker('getDate'));
+    // console.log(this.$calendar().datepicker('getDate'));
     var date = this.$calendar().datepicker('getDate');
     BringUp.Events.trigger('changeDateInCalendar', date);
     this.paintDate();
@@ -84,7 +84,7 @@ BringUp.Views.MessagesMonth = Backbone.View.extend({
         var data = self.collection.toJSON();
         var x = [];
         var val = [true,"",""];
-        console.log(date.toLocaleDateString('en-US'));
+        // console.log(date.toLocaleDateString('en-US'));
         var match = date.toLocaleDateString('en-US');
         for(i=0;i<data.length;i++){
             x.push(data[i].send_date);

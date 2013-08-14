@@ -15,4 +15,5 @@ class Message < ActiveRecord::Base
       teacher_id: self.teacher_id
     }
   end
+
 end
