@@ -49,6 +49,10 @@ $(document).ready(function()  {
     });
   };
 
+  $('.showparent').click(function(){
+    $('.parent_item').toggle();
+  });
+
   $('#teacher_school').autocomplete
       source: $('#teacher_school').data('autocomplete-source')
   // $('.datepicker').datepicker({

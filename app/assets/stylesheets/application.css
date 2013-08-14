@@ -159,6 +159,47 @@ textarea {
 	margin-left: 1%;
 }
 
+.killswitch {
+	width:100%;
+	background-color: white;
+	margin-top:10px;
+	padding:15px 0 15px 0;
+}
+
+.switch {
+	width:43%;
+	margin:auto;
+	border: 2px solid #e3e3e3;
+	float:left;
+	font-size:2em;
+	position:relative;
+	padding:15px 0 15px 0;
+	color: #e3e3e3;
+	transition: 0.5s;
+}
+
+.switch:hover{
+	background-color: #e3e3e3;
+	border: 2px solid #e3e3e3;
+	color: white;
+	transition: 0.5s;
+}
+
+.activeswitch {
+	background-color: #8BC9CA;
+	border: 2px solid #8BC9CA;
+	color:black;
+}
+
+#on {
+	margin-left:15px;
+	margin-right:0;
+}
+
+#off {
+	margin-left:0;
+}
+
 .parent_list{
 	width:100%;
 	background-color: white;
@@ -175,6 +216,12 @@ textarea {
 	padding-bottom:7px;
 	margin:auto;
 	margin-bottom:10px;
+	transition: .5s;
+}
+
+.parent_list h3:hover{
+	background-color:#e3e3e3;
+	transition: .5s;
 }
 
 .parent_item{
@@ -183,6 +230,7 @@ textarea {
 	margin:auto;
 	margin-top:10px;
 	border: 2px solid #e3e3e3;
+	display:none;
 }
 
 .parent_item ul{
@@ -198,7 +246,16 @@ textarea {
 	padding:0;
 	margin:auto;
 	font-size:1em;
+}
 
+h3.showparent {
+	margin-bottom: 0;
+	transition: .5s;
+}
+
+h3.showparent:hover {
+	background-color:#e3e3e3;
+	transition: .5s;
 }
 
 .centercard {
