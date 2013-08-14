@@ -28,8 +28,8 @@
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :school %><br />
-    <%= f.text_field :school, data:{autocomplete_source: School.order(:school_name.map(&:school_name)} %>
+    <%= f.label :school_name %><br />
+    <%= f.text_field :school_name %>
   </div>
   <div class="field">
     <%= f.label :principal_name %><br />

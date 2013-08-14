@@ -1,10 +1,8 @@
 BringUp::Application.routes.draw do
 
-  get "schools_controller/index"
-
-  get "schools_controller/update"
-
-  get "schools_controller/show"
+  resources :schools do
+    get 'suggest', :on => :collection
+  end
 
   resources :replies
 
