@@ -10,7 +10,6 @@
  *
  *= require jquery.ui.all
  *= require_tree .
- *= require pages.css.scss
  *= require_self
  */
 
