@@ -514,3 +514,12 @@ img.icon:hover {
 	opacity:1;
 	transition:.5s;
 }
+
+.footer {
+	clear:both;
+	color:gray;
+}
+
+.copyright p{
+	font-size:.75em;
+}
