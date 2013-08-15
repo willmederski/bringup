@@ -54,9 +54,9 @@ $(document).ready(function()  {
     $('.parent_item').toggle();
   });
 
-  $('#teacher_school_name').autocomplete({
-    source: $('#teacher_school_name').data('autocomplete-source')
-  });
+  // $('#teacher_school_name').autocomplete({
+  //   source: $('#teacher_school_name').data('autocomplete-source')
+  // });
 
   // $('.datepicker').datepicker({
   //   onSelect: function(dateText, inst){
