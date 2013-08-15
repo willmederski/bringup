@@ -13,11 +13,11 @@
 			<% if current_teacher.present? %>
 				Welcome, <%=current_teacher.full_name%>  |  
 				<%= link_to 'My Account', courses_path %>  |  
-				<%= link_to 'About', '#' %>  |  
+				<%= link_to 'About', about_path %>  |  
 				<%= link_to 'Contact', '#' %>  |  
 		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
 			<% else %>
-				<%= link_to 'About', '#' %>  |  
+				<%= link_to 'About', about_path %>  |  
 				<%= link_to 'Contact', '#' %>  | 
 		  		<%= link_to 'Sign In', new_teacher_session_path %> |
 		  		<%= link_to 'Register Now!', new_teacher_registration_path %>

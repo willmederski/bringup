@@ -4,4 +4,13 @@ class PagesController < ApplicationController
     def index
       render :layout => 'publicapp'
     end
+
+    def about
+      render :layout => 'publicapp'
+    end
+
+    def contact
+      render :layout => 'publicapp'
+    end
 end
+

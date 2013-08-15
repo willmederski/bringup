@@ -28,6 +28,10 @@ BringUp::Application.routes.draw do
 
   get '/pages/index' => 'pages#index'
 
+  get '/pages/about' => 'pages#about', as: 'about'
+
+  get '/pages/contact' => 'pages#about', as: 'contact'
+
   post '/courses/:course_id/messages' => 'messages#create', as: 'week_message'
 
   match '/courses/:course_id/messages/send' => 'messages#send_message', as: 'send_message'

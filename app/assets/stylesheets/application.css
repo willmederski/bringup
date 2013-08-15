@@ -396,7 +396,7 @@ a {
 #banner{
 	color:#FF9200;
 	font-family: 'Raleway', sans-serif;
-	font-size:8em;
+	font-size:10em;
 }
 
 #banner_text1,#banner_text2{
@@ -431,20 +431,86 @@ a {
 	margin:4%;
 	float:left;
 	position:relative;
+	font-size:2em;
+	font-family: 'Raleway', sans-serif;
+	line-height: 1.25em;
 }
 
 .landing_panel p{
 	text-align:left;
 }
 
-#landing_footer {
+.landing_panel p{
+	text-align:left;
+}
 
+#landing_footer h3{
+	margin-top:0;
 }
 
 #landing_body img {
 	width:80%;
 	margin:3%;
-	margin-bottom:10%;
 }
 
+.about_content {
+	width: 90%;
+	margin: auto;
+	margin-bottom:5%;
+	margin-top:5%;
+}
 
+.founder_wrapper {
+	width: 48%;
+	margin:auto;
+}
+
+#founder_1{
+	float: left;
+	position:relative;
+}
+
+#founder_2{
+	float:right;
+	position:relative;
+}
+
+.founder_wrapper img {
+	width:100%;
+}
+
+.founder_wrapper p {
+	text-align:left;
+	margin: 0;
+	font-size: 1.25em;
+	color:black;
+	font-family: 'Raleway', sans-serif;
+	line-height: 1.5em;
+
+}
+
+.founder_details p {
+	color:gray;
+	margin-top:15px;
+	font-size:1em;
+}
+
+.founder_name {
+	float:left;
+}
+
+.founder_contact {
+	float:right;
+	text-align:right;
+}
+
+img.icon {
+	width: 20px;
+	opacity:.5;
+	transition:.5s;
+}
+
+img.icon:hover {
+	opacity:1;
+	transition:.5s;
+}
