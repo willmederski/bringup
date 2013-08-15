@@ -15,7 +15,7 @@
     <span class="counter<%= index %>"></span>
     <textarea id='body<%= index %>' name='body<%= index %>'><% if message.length > 0: %><%= message[0].get('body') %><% end %></textarea>
     </br>
-    <input name='date<%= index %>' type="hidden" value='<%= weekday.toISOString() %>'>
+    <input name='date<%= index %>' type="hidden" value='<%= weekday %>'>
     <label for='body'><%= weekday.toDateString() %></label>
   </div>
   <% index += 1 %>

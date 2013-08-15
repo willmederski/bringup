@@ -264,23 +264,28 @@ h3.showparent:hover {
 	background-color: white;
 	float: left;
 	margin-left: 1%;
+	padding-top:15px;
 }
 
 #todays_message{
-	width:89%;
-	border: 5px solid #e3e3e3;
+	width:100%;
+	background-color: white;
 	margin:auto;
-	margin-top:15px;
-	margin-bottom:15px;
 }
 
 #todays_message h3{
-	margin-top:15px;
+	padding-top:15px;
+	margin:auto;
+	width:80%;
 }
 
 #todays_message p{
-	width:80%;
+	width:86%;
 	margin:auto;
+	margin-bottom:5px;
+	padding-top:15px;
+	padding-bottom:15px;
+	border:3px solid #e3e3e3;
 }
 
 .leftcard {
@@ -522,5 +527,10 @@ img.icon:hover {
 
 .copyright p{
 	font-size:.75em;
+}
+
+.savebar {
+	width:90%;
+	margin:0;
 }
 
