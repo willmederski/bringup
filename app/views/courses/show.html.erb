@@ -4,23 +4,20 @@
 
 <div class="coursewrapper">
 	<div class="leftcard">
-		<div id="todays_message">
-			<div class="todays_message_wrapper">
-				<h3>Today's Message: </h3>
-				<% if @course.messages.find_by_send_date(Time.now.to_date) %>
-					<p><%= @course.messages.find_by_send_date(Time.now.to_date).body %></p>
+		<div class="todaysmessage">
+			<h3 class="todaysheading">Today's Message:</h3>
+			<% if @course.messages.find_by_send_date(Time.zone.now.to_date) %>
+				<p class = "text"><%= @course.messages.find_by_send_date(Time.zone.now.to_date).body %></p>
 				<form class="Messages" action="<%=url_for(send_message_path(@course.id))%>" method="post">
 					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-					<input name="body" type="hidden" value="<%= @course.messages.find_by_send_date(Time.now.to_date).body %>">
+					<input name="body" type="hidden" value="<%= @course.messages.find_by_send_date(Time.zone.now.to_date).body %>">
 					<div class="actions">
-			    		<input type="submit" value="Send Today's Message" class="submit" style="width:150px">
+			    		<input type="submit" value="Send Today's Message" class="savebar">
 			  		</div>
 				</form>
-				<% else %>
-					<p>You haven't saved a message for today yet. Please use the form below to submit one.</p>
-				</br>
-				<% end %>
-			</div>
+			<% else %>
+				<p class = "text">You haven't saved a message for today yet. Please use the form to the right to submit one.</p>
+			<% end %>
 		</div>
 
 		<% current_teacher.courses.each do |course| %>

@@ -75,7 +75,15 @@ body {
 .navbar{
 	float:right;
 	margin-right:11%;
-	margin-top: -35px;
+	margin-top: -38px;
+}
+
+.navbar a {
+	color:white;
+}
+
+.landing_links a {
+	color:#009092;
 }
 
 h1 {
@@ -88,10 +96,10 @@ h2 {
 	font-family: 'Raleway', sans-serif;
 	background-color:#8BC9CA;
 	color:white;
-	width: 92%;
-	border-radius: 5px;
+	width: 93%;
+/*	border-radius: 5px;*/
 	margin: auto;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	padding: 15px;
 	line-height: 2em;
 	text-align: center;
@@ -114,9 +122,44 @@ h5{
 }
 
 .courseindex {
-	width: 25%;
+	width: 100%;
 	margin: auto;
+	text-align:left;
+}
+
+.courseindex a:hover{
+	color:white;
+	transition:.5s;
+}
+
+.course_index_item{
+	display: inline-block;
+	font-family: 'Raleway', sans-serif;
+	font-size:1.5em;
+	margin:10px 0 0 10px;
+	width:27%;
+	height:30px;
+	padding:15px;
 	background-color:#e3e3e3;
+	transition:.5s;
+}
+
+.course_index_item:hover{
+	background-color:#8BC9CA;
+	transition:.5s;
+}
+
+.add_course_index{
+	color:white;
+	background-color:#e3e3e3;
+	text-align:center;
+	margin:10px;
+	padding:10px 0 10px 0;
+}
+
+.add_course_index:hover{
+	background-color:#8BC9CA;
+	transition:.5s;
 }
 
 .hidden{
@@ -223,6 +266,7 @@ textarea {
 .parent_list h3:hover{
 	background-color:#e3e3e3;
 	transition: .5s;
+	text-decoration:underline;
 }
 
 .parent_item{
@@ -267,25 +311,31 @@ h3.showparent:hover {
 	padding-top:15px;
 }
 
-#todays_message{
+.todaysmessage{
 	width:100%;
 	background-color: white;
-	margin:auto;
+	padding:0;
+	padding-top:15px;
+	padding-bottom:5px;
+	margin-bottom:10px;
 }
 
-#todays_message h3{
-	padding-top:15px;
+.todaysheading {
+	font-size: 1em;
+	background-color:#8BC9CA;
+	width:90%;
+	padding:0;
+	padding-top:7px;
+	padding-bottom:7px;
 	margin:auto;
-	width:80%;
+	margin-bottom:10px;
+	transition: .5s;
 }
 
-#todays_message p{
-	width:86%;
-	margin:auto;
-	margin-bottom:5px;
-	padding-top:15px;
-	padding-bottom:15px;
-	border:3px solid #e3e3e3;
+.text {
+	margin:10px;
+	padding:10px;
+	border:2px solid #e3e3e3;
 }
 
 .leftcard {
@@ -530,7 +580,7 @@ img.icon:hover {
 }
 
 .savebar {
-	width:90%;
+	width:92%;
 	margin:0;
 }
 

@@ -10,7 +10,7 @@
 <body>
 	<div id="landing_header">
 		<h1><%= link_to 'bringup', :root %></h1>
-		<div class="navbar">
+		<div class="navbar landing_links">
 			<% if current_teacher.present? %>
 				Welcome, <%=current_teacher.full_name%>  |  
 				<%= link_to 'My Account', courses_path %>  |  
