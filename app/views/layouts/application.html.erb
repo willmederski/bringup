@@ -13,7 +13,7 @@
 			<% if current_teacher.present? %>
 				Welcome, <%=current_teacher.full_name%> |
 				<%= link_to 'About', about_path %>  |  
-				<%= link_to 'Contact', '#' %>  | 
+				<%= link_to 'Contact', 'mailto:willmederski@gmail.com' %>  | 
 		  		<%= link_to 'Sign Out', destroy_teacher_session_path, :method => :delete %>
 			<% else %>
 				<%= link_to 'About', about_path %>  |  
