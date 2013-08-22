@@ -3,20 +3,21 @@
 <ul class="bar">
   <li class= "weeknav" id="lastweek"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></li>
   <li>
-    <h3><%= @weekdays[0].toLocaleDateString() %> - <%= @weekdays[4].toLocaleDateString() %></h3>
+    <h3><%= moment(@weekdays[0]).format("M/D/YYYY") %> - <%= moment(@weekdays[4]).format("M/D/YYYY") %></h3>
   </li>
   <li class="weeknav" id="nextweek"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></li>
 </ul>
 
 <% index = 1 %>
 <% for weekday in @weekdays: %>
-  <% message = @messages.where({send_date: weekday.toLocaleDateString('en-US'); }) %>
+  <% datematch = moment(weekday).format("M/D/YYYY") %>
+  <% message = @messages.where({send_date: datematch; }) %>
   <div class="message_form">
     <span class="counter<%= index %>"></span>
     <textarea id='body<%= index %>' name='body<%= index %>'><% if message.length > 0: %><%= message[0].get('body') %><% end %></textarea>
     </br>
-    <input name='date<%= index %>' type="hidden" value='<%= weekday %>'>
-    <label for='body'><%= weekday.toDateString() %></label>
+    <input name='date<%= index %>' type="hidden" value='<%= weekday.toDateString() %>'>
+    <label for='body'><%= moment(weekday).format("M/D/YYYY") %></label>
   </div>
   <% index += 1 %>
 <% end %>

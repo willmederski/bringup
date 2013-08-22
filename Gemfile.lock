@@ -104,6 +104,8 @@ GEM
       excon (>= 0.16.0)
       json (>= 1.7.7)
     mime-types (1.23)
+    momentjs-rails (2.1.0)
+      railties (>= 3.1)
     multi_json (1.7.7)
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
@@ -207,6 +209,7 @@ DEPENDENCIES
   jquery-ui-rails
   localtunnel (~> 0.3)
   mailchimp-api (~> 2.0.1)
+  momentjs-rails (~> 2.1.0)
   pg
   prawn (~> 0.12.0)
   rabl

@@ -11,14 +11,15 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
     this.collection.on('reset', this.render, this);
     this.collection.on('changeDate', this.render, this);
     BringUp.Events.on('changeDateInCalendar', this.handleCalendarChange, this);
-
-    this.setStartDate(new Date($('#this-weeks-monday').data('date')));
+    this.setStartDate($('#this-weeks-monday').data('date'));
   },
 
   setStartDate: function(startDate) {
-    var sunday = startDate;
+    console.log($('#this-weeks-monday').data('date'))
+    console.log('Start Date', startDate);
+    var sunday = new Date(startDate);
     var mon = new Date(sunday);
-    mon.setDate(sunday.getDate() + 1);
+    mon.setDate(sunday.getDate());
     var tue = new Date(mon);
     tue.setDate(tue.getDate() + 1);
     var wed = new Date(tue);
@@ -32,7 +33,7 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   },
 
   handleCalendarChange: function(selectDate) {
-    console.log('Rercived date', selectDate)
+    console.log('Received date', selectDate)
     var selected = selectDate; // Fri Oct 4
     var date = new Date();
     var t = selected.getDay(); // 5
@@ -42,13 +43,13 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
     console.log('day', t);
     console.log('calendarDate', calendarDate.getDate()); 
     if (t === 0){
-      date.setDate(calendarDate.getDate());
+      date.setDate(calendarDate.getDate()+1);
       console.log("t=0",date);
     }
     else {
-      date.setDate(calendarDate.getDate()- t); // (4) + 1 - 5 = 0
-      console.log("t!=0",date);
-    };
+      date.setDate(calendarDate.getDate()+1-t);
+      console.log("t=1",date);
+    }
     console.log('Date', date);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
@@ -57,14 +58,16 @@ BringUp.Views.MessagesIndex = Backbone.View.extend({
   moveToPreviousWeek: function() {
     
     date = this.weekdays[0];
-    date.setDate(date.getDate() - 8);
+    date.setDate(date.getDate() - 7);
+    console.log(date);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
   },
 
   moveToNextWeek: function() {
     date = this.weekdays[0];
-    date.setDate(date.getDate() + 6);
+    date.setDate(date.getDate() + 7);
+    console.log(date);
     this.setStartDate(date);
     this.collection.trigger('changeDate');
   },

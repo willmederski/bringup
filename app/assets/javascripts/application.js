@@ -14,6 +14,7 @@
 //= require jquery
 //= require underscore
 //= require backbone
+//= require moment
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bring_up

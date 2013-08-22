@@ -31,6 +31,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'backbone-on-rails'
+
 end
 
 gem 'jquery-rails'
@@ -40,6 +41,7 @@ gem 'formtastic'
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'jquery-ui-rails'
+gem "momentjs-rails", "~> 2.1.0"
 
 gem 'rabl'
 gem "localtunnel", "~> 0.3"
