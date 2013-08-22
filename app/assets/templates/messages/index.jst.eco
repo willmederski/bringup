@@ -13,11 +13,12 @@
   <% datematch = moment(weekday).format("M/D/YYYY") %>
   <% message = @messages.where({send_date: datematch; }) %>
   <div class="message_form">
-    <span class="counter<%= index %>"></span>
+    <span class="rightside counter<%= index %>"></span>
     <textarea id='body<%= index %>' name='body<%= index %>'><% if message.length > 0: %><%= message[0].get('body') %><% end %></textarea>
     </br>
     <input name='date<%= index %>' type="hidden" value='<%= weekday.toDateString() %>'>
-    <label for='body'><%= moment(weekday).format("M/D/YYYY") %></label>
+    <label class='rightside' for='body'><%= moment(weekday).format("M/D/YYYY") %></label>
+    <div style="display: block; clear: both;"></div>
   </div>
   <% index += 1 %>
 <% end %>

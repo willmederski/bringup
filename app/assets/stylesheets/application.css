@@ -173,15 +173,23 @@ h5{
 	margin-bottom: 10px;
 	padding: 1%;
 	padding-bottom:5px;
-	text-align:right;
+	text-align:center;
+}
+
+.rightside{
+	float:right;
+	display:relative;
+	margin-right:5px;
 }
 
 textarea {
 	height: 60px;
 	width: 98%;
 	border: none;
-	margin:none;
+	margin:auto;
 	resize: none;
+	font-family: 'Verdana', sans-serif;
+	font-size:.8em;
 }
 
 .counter1, .counter2, .counter3, .counter4, .counter5 {
