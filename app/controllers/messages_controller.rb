@@ -44,6 +44,8 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    # This method handles the create, destroy and update methods for messages based on whether a prior message already exists.
+    # This method could use some refactoring attention.
     #create overwrites existing data for the same date and only creates new messages if the body of the submission contains viable content
     require 'dates'
     @message = @message1
@@ -99,6 +101,7 @@ class MessagesController < ApplicationController
   end
 
   def send_message
+    # This method accepts a post request from the Send Todays message button on the primary dashboard and sends an outgoing message through Twilio to each of the recipients on the course parent list.
     # @message = params
     # puts @message
     @parents = Parent.find_all_by_class_code(params[:course_id])

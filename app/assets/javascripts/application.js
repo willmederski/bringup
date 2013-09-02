@@ -26,6 +26,7 @@
 //= require_tree .
 //= require_self
 
+// This code adds a counter to the messages form on the courses show view. It turns the text red as the character limit approaches.
 $(document).ready(function()  {
 
   $.fn.counterField = function() {
@@ -50,7 +51,7 @@ $(document).ready(function()  {
     });
   };
 
-
+// This code toggles the parent list on the primary teacher dashboard
   $('.showparent').click(function(){
     $('.parent_item').toggle();
   });
